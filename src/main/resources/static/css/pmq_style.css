@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+/* user */
+
+#wrap {margin:auto; width:700px;}
+
+header {height:100px;}
+#logo {color:#000; font-weight:bold; font-size:30px;}
+
+section {width:250px;}
+#signinBtn {color:#fff;}
+#signupBtn {color:#fff;}
+#signupLink {color:#000;}
+

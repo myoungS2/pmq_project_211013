@@ -5,8 +5,12 @@
 <%-- input --%>
 <div>
 	<%-- 프로필 사진 --%>
-	<div>
-		<img>
+	<div class="d-flex justify-content-center">
+		<div class="w-50">
+			<%-- input file을 d-none으로 숨겨둠 --%>
+			<input type="file" id="file" class="d-none"  accept=".jpg,.jpeg,.png,.gif">
+			<a href="#" id="fileUploadBtn"><img src="/static/images/profileIcon.png" alt="프로필아이콘" ></a>
+		</div>
 	</div>
 	<%-- 아이디/ 중복확인 --%>
 	<div class="d-flex">

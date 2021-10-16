@@ -15,7 +15,7 @@
 	<%-- 아이디/ 중복확인 --%>
 	<div class="d-flex">
 		<input type="text" id="loginIdInput" name="loginId" class="form-control mt-3 col-8" placeholder="ID"> 
-		<a id="idCheckHref" type="button" class="mt-3 ml-3 col-4"><small>중복확인</small></a>
+		<a id="idCheckHref" type="button" class="btn mt-3 ml-3 col-4"><small>중복확인</small></a>
 	</div>
 	<%-- 중복확인 메세지 --%>
 	<div>
@@ -37,7 +37,7 @@
 	<%-- 닉네임 / 중복확인 --%>
 	<div class="d-flex">
 		<input type="text" id="nicknameInput" name="nickname" class="form-control mt-3 col-8" placeholder="NICKNAME"> 
-		<a id="nicknameCheckHref" type="button" class="mt-3 ml-3 col-4"><small>중복확인</small></a>
+		<a id="nicknameCheckHref" type="button" class="btn mt-3 ml-3 col-4"><small>중복확인</small></a>
 	</div>
 	<%-- 중복확인 메세지 --%>
 	<div>

@@ -18,11 +18,11 @@
 <div id="wrap" class="container">
 	<div>
 		<%-- gnb(가장 다방면으로 쓰일 gnb) --%>
-		<header>
+		<header id="gnbHeader">
 			<jsp:include page="../include/gnb.jsp" />
 		</header>
 		<%-- edition CRUD --%>
-		<section class="d-flex justify-content-center">
+		<section id="editionCreateSection">
 			<jsp:include page="../${viewName}.jsp" />
 		</section>
 	</div>

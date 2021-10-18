@@ -16,17 +16,17 @@
 <link rel="stylesheet" type="text/css" href="/static/css/pmq_style.css"> <!-- application.yml에 새로운 설정을 해주었기 때문에 기존과 다르게 /static/을 포함 -->
 </head>
 <body>
-	<div id="wrap" class="container d-flex justify-content-center">
-		<div>
-			<%-- gnb_user --%>
-			<header class="d-flex justify-content-center">
-				<jsp:include page="../include/gnb_user.jsp" />
-			</header>
-			<%-- 로그인/ 회원가입/ 프로필수정 --%>
-			<section>
-				<jsp:include page="../${viewName}.jsp" />
-			</section>
-		</div>
+<div id="timelineWrap" class="d-flex justify-content-center">
+	<div id="timelineAround">
+		<%-- gnb_timeline --%>
+		<header id="timelineHeader">
+			<jsp:include page="../include/gnb_timeline.jsp" />
+		</header>
+		<%-- editions --%>
+		<section class="d-flex justify-content-between align-items-center">
+			<jsp:include page="../timeline/${viewName}.jsp" />
+		</section>
 	</div>
+</div>
 </body>
 </html>

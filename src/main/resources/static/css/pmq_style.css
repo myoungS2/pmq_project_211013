@@ -12,3 +12,20 @@ section {width:250px;}
 #signupBtn {color:#fff;}
 #signupLink {color:#000;}
 
+
+/* timeline */
+
+#timelineHeader {height:180px;}
+
+#timelineWrap {margin:auto; width:900px;}
+#timelineAround {width:900px;}
+
+#timelineLogo {color:#000; font-weight:bold; font-size:60px;} 
+#signInUpUrl {color:#000; font-weight:bold;}
+
+#editionCard {width:300px; height:300px;}
+#edtioncard {width:200px; height:200px;}
+
+/* gnb(general) */
+
+#gnbLogo {color:#000; font-weight:bold; font-size:20px;}

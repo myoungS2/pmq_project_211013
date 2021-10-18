@@ -14,19 +14,18 @@
 
 <!-- css 연결 -->
 <link rel="stylesheet" type="text/css" href="/static/css/pmq_style.css"> <!-- application.yml에 새로운 설정을 해주었기 때문에 기존과 다르게 /static/을 포함 -->
-</head>
 <body>
-	<div id="wrap" class="container d-flex justify-content-center">
-		<div>
-			<%-- gnb_user --%>
-			<header class="d-flex justify-content-center">
-				<jsp:include page="../include/gnb_user.jsp" />
-			</header>
-			<%-- 로그인/ 회원가입/ 프로필수정 --%>
-			<section>
-				<jsp:include page="../${viewName}.jsp" />
-			</section>
-		</div>
+<div id="wrap" class="container">
+	<div>
+		<%-- gnb(가장 다방면으로 쓰일 gnb) --%>
+		<header>
+			<jsp:include page="../include/gnb.jsp" />
+		</header>
+		<%-- edition CRUD --%>
+		<section class="d-flex justify-content-center">
+			<jsp:include page="../${viewName}.jsp" />
+		</section>
 	</div>
+</div>
 </body>
 </html>

@@ -15,12 +15,12 @@
 				<span>The month between people</span>
 			</div>
 		</div>
-		<%-- sign in / user 정보 --%>
+		<%-- sign in / uSser 정보 --%>
 		<div class="col-4 d-flex justify-content-center align-items-center">
 			<%-- 로그인 시 --%>
 			<c:if test="${not empty userId}">
 				<div>
-					<a href="/user/profile_{userRole}_view">${userNickname}</a><span>님 안녕하세요.</span><br>
+					<span>${userNickname}님 안녕하세요.</span><br>
 					<a href="/edition/create_view" id="editionCreateBtn" class="btn btn-dark w-100">발행시작</a>
 				</div>
 			</c:if>

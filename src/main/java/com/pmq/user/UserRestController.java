@@ -129,8 +129,8 @@ public class UserRestController {
 		// 세션 (로그인 상태 유지)
 			HttpSession session = request.getSession();
 		// 담고싶은 정보 담기
-			session.setAttribute("loginId", user.getLoginId());
-			session.setAttribute("nickname", user.getNickname());
+			session.setAttribute("userLoginId", user.getLoginId());
+			session.setAttribute("userNickname", user.getNickname());
 			session.setAttribute("userId", user.getId());
 			
 		

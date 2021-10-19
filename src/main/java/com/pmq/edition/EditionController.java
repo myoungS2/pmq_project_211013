@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/edition")
 @Controller
-public class editionController {
+public class EditionController {
 	
 	// 에디션 글 작성 뷰
 	@RequestMapping("/create_view")

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.pmq.edition.dao.EditionDAO">
+ 	<insert id="insertEdition" parameterType="map">
+ 		INSERT INTO `edition`	
+ 		(
+	 		`userId`
+	 		,`thumbnailPath`
+	 		,`subject`
+	 		,`category`
+	 		,`publishingDate`
+	 		,`content`
+	 		,`createdAt`
+	 		,`updatedAt`
+ 		)
+ 		VALUES
+ 		(
+ 			#{userId}
+	 		#{thumbnailPath}
+	 		#{subject}
+	 		#{category}
+	 		#{publishingDate}
+	 		#{content}
+	 		, NOW()
+	 		, NOW()
+ 		)
+ 	</insert>
+ 
+ </mapper>

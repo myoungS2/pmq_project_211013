@@ -125,7 +125,7 @@
 			// 서버에 요청
 			// 폼태그 만들기
 			let formData = new FormData();
-			formData.append("thumbnailPath", $('#file')[0].files[0]);
+			formData.append("file", $('#file')[0].files[0]);
 			formData.append("subject", subject);
 			formData.append("category", editionType);
 			formData.append("publishingDate", date);
@@ -141,7 +141,7 @@
 				, success: function(data){
 					if (data.result == 'success'){
 						alert("발행물 등록이 완료되었습니다.");
-						location.href="/timeline/view"; // 나중에는 글 디테일 화면으로 넘어가기
+						location.href= '/timeline/view'; // 나중에는 글 디테일 화면으로 넘어가기
 					}
 				}
 				, error: function(e){

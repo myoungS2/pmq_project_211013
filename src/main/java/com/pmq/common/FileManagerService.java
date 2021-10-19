@@ -20,15 +20,15 @@ public class FileManagerService {
 	// WAS에 url을 만들어내고, 그 url과 내컴퓨터에 있는 이미지파일을 맵핑!
 	// 1. 실제 이미지가 저장 될 경로
 	// 1) 집 컴퓨터
-	// public final static String FILE_UPLOAD_PATH = "D:\\웹개발(21-05-20)\\pmq\\pmq_workspace\\images/";
+	 public final static String FILE_UPLOAD_PATH = "D:\\웹개발(21-05-20)\\pmq\\pmq_workspace\\images/";
 	// 2) 학원
-	 public final static String FILE_UPLOAD_PATH = "D:\\심미영_웹개발_210520\\7_personal_project\\pmq_workspace\\images/";
+	// public final static String FILE_UPLOAD_PATH = "D:\\심미영_웹개발_210520\\7_personal_project\\pmq_workspace\\images/";
 	
 	// 2. 파일을 받아서 String(url = 내컴퓨터 상 url) return
-	public String saveFile(String nickname, MultipartFile file) throws IOException {
+	public String saveFile(String userNickname, MultipartFile file) throws IOException {
 		// 3. 파일 디렉토리 경로 -> 사용자별로 다른 폴더를 갖게..! (파일명이 겹치지 않게)
 		// ex) marobiana_162099585780(current time)/apple.png  
-		String directoryName = nickname + "_" + System.currentTimeMillis() + "/" ;
+		String directoryName = userNickname + "_" + System.currentTimeMillis() + "/" ;
 		String filePath = FILE_UPLOAD_PATH + directoryName; // 이 경로에 만들 것이다..!
 		
 		// 4. 진짜 폴더 만들기

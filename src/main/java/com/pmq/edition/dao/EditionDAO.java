@@ -10,7 +10,8 @@ public interface EditionDAO {
 	// 발행글 등록
 	public int insertEdition(
 		@Param("userId") int userId,
-		@Param("imagePath")String imagePath,
+		@Param("userNickname") String userNickname,
+		@Param("thumbnailPath")String thumbnailPath,
 		@Param("subject")String subject,
 		@Param("category")String category,
 		@Param("publishingDate")int publishingDate,

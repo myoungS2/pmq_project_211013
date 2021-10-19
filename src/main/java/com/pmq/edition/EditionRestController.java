@@ -26,7 +26,7 @@ public class EditionRestController {
 	// create edtion
 	@PostMapping("/create")
 	public Map<String, Object> editionCreate(
-		@RequestParam("thumbnailPath") MultipartFile thumbnailPath,
+		@RequestParam("file") MultipartFile file,
 		@RequestParam("subject") String subject,
 		@RequestParam("category") String category,
 		@RequestParam("publishingDate") int publishingDate,
@@ -42,7 +42,7 @@ public class EditionRestController {
 				result.put("result", "error");
 				
 		// insert DB
-		int row = editionBO.createEdition(userId, userNickname ,thumbnailPath, subject, category, publishingDate, content);
+		int row = editionBO.createEdition(userId, userNickname ,file, subject, category, publishingDate, content);
 		if (row > 0) {
 			// 성공
 			result.put("result", "success");

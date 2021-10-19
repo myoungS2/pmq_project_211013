@@ -20,27 +20,19 @@ public class EditionBO {
 	private FileManagerService fileManagerService;
 	
 	// 발행글 등록
-	public int createEdition(
-			int userId,
-			String userNickname,
-			MultipartFile thumbnailPath, 
-			String subject, 
-			String category,
-			int publishingDate, 
-			String content) {
-		
-		String imagePath = null;
+	public int createEdition(int userId, String userNickname, MultipartFile file, String subject, String category,int publishingDate, String content) {
 		
 		// fileManagerService 이미지 주소를 요청(사용자가 업로드한 파일을 그대로 DB에 저장할 수 없으므로!)
+		String thumbnailPath = null;
 		
-		if (thumbnailPath != null) {
+		if (file != null) {
 			try {
-				imagePath = fileManagerService.saveFile(userNickname, thumbnailPath);
+				thumbnailPath = fileManagerService.saveFile(userNickname, file);
 			} catch (IOException e) {
-				imagePath = null;
+				e.printStackTrace();
 			}
+
 		}
-		
-		return editionDAO.insertEdition(userId, imagePath, subject, category, publishingDate, content);
-	
+		return editionDAO.insertEdition(userId, userNickname , thumbnailPath, subject, category, publishingDate, content);
 	}
+}	

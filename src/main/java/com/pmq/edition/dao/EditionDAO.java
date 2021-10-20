@@ -8,11 +8,11 @@ import org.springframework.web.multipart.MultipartFile;
 public interface EditionDAO {
 	
 	// 발행글 등록
-	public int insertEdition(
-		@Param("userId") int userId,
-		@Param("imagePath")String imagePath,
-		@Param("subject")String subject,
-		@Param("category")String category,
-		@Param("publishingDate")int publishingDate,
-		@Param("content")String content);
+//	public int insertEdition(
+//		@Param("userId") int userId,
+//		@Param("imagePath")String imagePath,
+//		@Param("subject")String subject,
+//		@Param("category")String category,
+//		@Param("publishingDate")int publishingDate,
+//		@Param("content")String content);
 }

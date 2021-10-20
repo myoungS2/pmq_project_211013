@@ -24,5 +24,10 @@ section {width:250px;}
 #gnbLogo {color:#000; font-weight:bold; font-size:20px;}
 
 /* edition */
-#editionCreateSection{width:600px;}
+#editionCreateSection {width:600px;}
 #createBtn {color:#fff;}
+
+/* publication */
+#publicationCreateSection {width:600px;}
+#draftBtn {color:#fff;}
+#sendOutBtn {color:#fff;}

@@ -1,6 +1,7 @@
 package com.pmq.edition.bo;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.pmq.common.FileManagerService;
 import com.pmq.edition.dao.EditionDAO;
+import com.pmq.edition.model.Edition;
 
 @Service
 public class EditionBO {
@@ -19,7 +21,17 @@ public class EditionBO {
 	@Autowired
 	private FileManagerService fileManagerService;
 	
-	// 발행글 등록
+	/**
+	 * create Edition
+	 * @param userId
+	 * @param userNickname
+	 * @param file
+	 * @param subject
+	 * @param category
+	 * @param publishingDate
+	 * @param content
+	 * @return
+	 */
 	public int createEdition(int userId, String userNickname, MultipartFile file, String subject, String category,int publishingDate, String content) {
 		
 		// fileManagerService 이미지 주소를 요청(사용자가 업로드한 파일을 그대로 DB에 저장할 수 없으므로!)
@@ -35,4 +47,10 @@ public class EditionBO {
 		}
 		return editionDAO.insertEdition(userId, userNickname , thumbnailPath, subject, category, publishingDate, content);
 	}
+	
+	// 등록 된 발행글 가져오기
+	public List<Edition> getEditionList(){
+		return editionDAO.selectEditionList();
+	}
+	
 }	

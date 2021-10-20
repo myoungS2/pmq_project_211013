@@ -21,6 +21,7 @@
 			<c:if test="${not empty userId}">
 				<div>
 					<span>${userNickname}님 안녕하세요.</span><br>
+					<%-- userRole 검사 -> publiser만 보이게 --%>
 					<a href="/edition/create_view" id="editionCreateBtn" class="btn btn-dark w-100">발행시작</a>
 				</div>
 			</c:if>

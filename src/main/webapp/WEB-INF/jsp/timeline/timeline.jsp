@@ -3,12 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%-- edition 가져오기 --%>
-<%-- <c:forEach items="${}"> --%>
-	<div id="editionFrame" class="bg-primary">
-		<div id="edtioncard" class="bg-danger m-3">
-			edition thumbnail
+<c:forEach var="edition" items="${editionList}">
+	<div id="editionFrame">
+		<div id="edtioncard" class="m-3">
 			<%-- edition thumbnail 가져오기 -> 클릭 시 디테일로 넘어감 --%>
-			<%-- <a href="/edition/detail/{editionId}">${edition.thumbnailPath}</a> --%>
+			${edition.thumbnailPath}
 		</div>
 	</div>
-<%-- </c:forEach> --%>
+</c:forEach>

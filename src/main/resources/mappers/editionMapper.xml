@@ -29,5 +29,21 @@
 	 		, NOW()
  		)
  	</insert>
- 
+ 	<select id="selectEditionList" resultType="com.pmq.edition.model.Edition">
+ 		SELECT
+ 			`id`
+			,`userId`
+			,`userNickname`
+			,`thumbnailPath`
+			,`subject`
+			,`category`
+			,`publishingDate`
+			,`content`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`edition`
+		ORDER BY
+			`createdAt` DESC
+ 	</select>
  </mapper>

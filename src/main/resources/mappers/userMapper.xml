@@ -54,9 +54,16 @@
  	<select id="selectUserByLoginIdAndPassword" parameterType="map" resultType="com.pmq.user.model.User">
  		SELECT 
  			`id`
- 			,`loginId`
+			,`loginId`
 			,`password`
+			,`profileImgPath`
+			,`name`
 			,`nickname`
+			,`email`
+			,`address`
+			,`website`
+			,`introduce`
+			,`role`
 			,`createdAt`
 			,`updatedAt`
 		FROM 
@@ -65,4 +72,25 @@
 			`loginId` = #{loginId}
 			AND `password` = #{password}
  	</select>
+ 	<select id="selectUser" parameterType="int" resultType="com.pmq.user.model.User">
+	 	SELECT 
+	 			`id`
+				,`loginId`
+				,`password`
+				,`profileImgPath`
+				,`name`
+				,`nickname`
+				,`email`
+				,`address`
+				,`website`
+				,`introduce`
+				,`role`
+				,`createdAt`
+				,`updatedAt`
+			FROM 
+				`user`	
+			WHERE
+				`id` = #{id}
+ 	</select>
+ 	
  </mapper>

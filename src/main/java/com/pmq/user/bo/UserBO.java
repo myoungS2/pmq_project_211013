@@ -69,9 +69,19 @@ public class UserBO {
 		return userDAO.insertUser(loginId, password, profileImgPath, name, nickname, email, address, website, introduce, role); 
 	}
 	
-	
+	/**
+	 * 로그인
+	 * @param loginId
+	 * @param password
+	 * @return
+	 */
 	public User getUserByLoginIdAndPassword(String loginId, String password) {
 		return userDAO.selectUserByLoginIdAndPassword(loginId, password);
+	}
+	
+	// select user -> userRole
+	public User getUser(int userId) {
+		return userDAO.selectUser(userId);
 	}
 	
 }

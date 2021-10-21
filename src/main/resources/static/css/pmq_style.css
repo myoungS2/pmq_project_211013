@@ -16,8 +16,7 @@ section {width:250px;}
 #timelineAround {width:900px;}
 #timelineLogo {color:#000; font-weight:bold; font-size:60px;} 
 #signInUpUrl {color:#000; font-weight:bold;}
-#editionCard {width:300px; height:300px;}
-#edtioncard {width:200px; height:200px;}
+#editionFrame {width:300px; height:300px;}
 
 /* gnb(general) */
 #gnbHeader {height:80px;}

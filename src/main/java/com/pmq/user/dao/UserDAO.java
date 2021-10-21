@@ -57,6 +57,7 @@ public interface UserDAO {
 			@Param("loginId")String loginId, 
 			@Param("password")String password);
 	
-	
+	// select user -> userRole 
+	public User selectUser(int id);
 	
 }

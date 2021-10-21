@@ -22,7 +22,9 @@
 				<div>
 					<span>${userNickname}님 안녕하세요.</span><br>
 					<%-- userRole 검사 -> publiser만 보이게 --%>
-					<a href="/edition/create_view" id="editionCreateBtn" class="btn btn-dark w-100">발행시작</a>
+					<c:if test="${userInfo.role eq 'publisher'}">
+						<a href="/edition/create_view" id="editionCreateBtn" class="btn btn-dark w-100">발행시작</a>
+					</c:if>
 				</div>
 			</c:if>
 			<%-- 비로그인 시 --%>

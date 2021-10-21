@@ -48,9 +48,18 @@ public class EditionBO {
 		return editionDAO.insertEdition(userId, userLoginId , thumbnailPath, subject, category, publishingDate, content);
 	}
 	
-	// 등록 된 발행글 가져오기
+	/**
+	 * get Edition List
+	 * @return
+	 */
 	public List<Edition> getEditionList(){
 		return editionDAO.selectEditionList();
 	}
+	
+	// select edition by editionId
+	public Edition getEdition(int editionId) {
+		return editionDAO.selectEdition(editionId);
+	}
+	
 	
 }	

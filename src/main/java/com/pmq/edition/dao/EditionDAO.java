@@ -31,6 +31,13 @@ public interface EditionDAO {
 		@Param("publishingDate")int publishingDate,
 		@Param("content")String content);
 	
-	// 등록 된 발행글 가져오기
+
+	/**
+	 * select Edition List
+	 * @return
+	 */
 	public List<Edition> selectEditionList();
+	
+	// select edition by editionId
+	public Edition selectEdition(int id);
 }

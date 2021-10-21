@@ -3,7 +3,7 @@
 <div>
 	<%-- edition subject --%>
 	<div>
-		에디션 제목
+		${editionInfo.subject}
 	</div>
 	<%-- 수정/삭제 버튼 , publisher 프로필사진 + nickname --%>
 	<div>
@@ -12,11 +12,13 @@
 			<a href="#" type="button" class="btn">수정</a>
 		</div>
 		<div>
-			<div>프로필사진</div>
+			<div><img src="${userInfo.profileImgPath}" alt="userProfileImg"></div>
 			<div><span>by ${userNickname}</span></div>
 		</div>
 	</div>
-	<%-- 좋아요 수 (클릭x) --%>
+	<%-- 좋아요 수 (발행인은 클릭x) --%>
+	<%-- full heart img --%>
+	
 	<%-- edition thumbnail --%>
 	
 	<%-- edition content --%>

@@ -7,7 +7,7 @@
 	<div id="editionFrame">
 		<div id="edtioncard" class="m-3">
 			<%-- edition thumbnail 가져오기 -> 클릭 시 디테일로 넘어감 --%>
-			${edition.thumbnailPath}
+			<img src="${edition.thumbnailPath}" alt="editionThumbnail" >
 		</div>
 	</div>
 </c:forEach>

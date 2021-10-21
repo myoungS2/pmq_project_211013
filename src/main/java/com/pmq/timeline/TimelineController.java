@@ -28,8 +28,10 @@ public class TimelineController {
 	public String timelineView(Model model, HttpServletRequest request) {
 		
 		// 로그인 여부 확인-> userId정보 내려주기
-		 HttpSession session = request.getSession();
-		 Integer userId = (Integer) session.getAttribute("userId");
+//		HttpSession session = request.getSession();
+//		Integer userId = (Integer) session.getAttribute("userId");
+		
+		// TODO: userId로 userRole정보 내려주기 -> 발행시작 버튼 (publisher일때만 보이게)
 		 
 		// edition(전체) 가져와서 thumbnailPath 뿌려주기
 		List<Edition> editionList = editionBO.getEditionList();

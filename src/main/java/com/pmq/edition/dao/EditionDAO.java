@@ -24,7 +24,7 @@ public interface EditionDAO {
 	 */
 	public int insertEdition(
 		@Param("userId") int userId,
-		@Param("userNickname") String userNickname,
+		@Param("userLoginId") String userLoginId,
 		@Param("thumbnailPath")String thumbnailPath,
 		@Param("subject")String subject,
 		@Param("category")String category,

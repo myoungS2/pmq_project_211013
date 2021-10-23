@@ -79,9 +79,22 @@ public class UserBO {
 		return userDAO.selectUserByLoginIdAndPassword(loginId, password);
 	}
 	
-	// select user -> userRole
-	public User getUser(int userId) {
-		return userDAO.selectUser(userId);
+	/**
+	 * 로그인 된 유저의 정보 (userRole)
+	 * @param loginUserId
+	 * @return
+	 */
+	public User getUser(int loginUserId) {
+		return userDAO.selectUser(loginUserId);
+	}
+	
+	/** 
+	 * 발행인 유저의 정보
+	 * @param userId
+	 * @return
+	 */
+	public User getPublisher(int userId) {
+		return userDAO.selectPublisher(userId);
 	}
 	
 }

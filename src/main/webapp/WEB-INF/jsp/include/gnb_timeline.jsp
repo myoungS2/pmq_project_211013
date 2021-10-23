@@ -15,7 +15,7 @@
 				<span>The month between people</span>
 			</div>
 		</div>
-		<%-- sign in / uSser 정보 --%>
+		<%-- sign in / user 정보 --%>
 		<div class="col-4 d-flex justify-content-center align-items-center">
 			<%-- 로그인 시 --%>
 			<c:if test="${not empty userId}">

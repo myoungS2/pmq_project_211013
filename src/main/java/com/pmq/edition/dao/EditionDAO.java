@@ -40,4 +40,5 @@ public interface EditionDAO {
 	
 	// select edition by editionId
 	public Edition selectEdition(int id);
+	
 }

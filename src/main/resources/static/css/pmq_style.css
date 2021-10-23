@@ -26,6 +26,16 @@ section {width:250px;}
 #editionCreateSection {width:600px;}
 #createBtn {color:#fff;}
 
+/* edition detail(publisher)*/
+#editionDetailDiv {width:600px;}
+#editionDelBtn {color:#fff;}
+#editionAltBtn {color:#fff;}
+#excelDownloadBtn {color:#fff;}
+
+/* edition detail(subscriber)*/
+#startSubscribeBtn {color:#fff;}
+#cancelSubscribeBtn {color:#fff;}
+
 /* publication */
 #publicationCreateSection {width:600px;}
 #draftBtn {color:#fff;}

@@ -57,7 +57,18 @@ public interface UserDAO {
 			@Param("loginId")String loginId, 
 			@Param("password")String password);
 	
-	// select user -> userRole 
+	/**
+	 * 로그인 된 유저의 정보 (userRole)
+	 * @param loginUserId
+	 * @return
+	 */
 	public User selectUser(int id);
+	
+	/**
+	 * 발행인 유저의 정보
+	 * @param userId
+	 * @return
+	 */
+	public User selectPublisher(int id);
 	
 }

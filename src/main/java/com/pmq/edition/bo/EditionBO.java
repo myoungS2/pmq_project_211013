@@ -3,6 +3,8 @@ package com.pmq.edition.bo;
 import java.io.IOException;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,6 +15,9 @@ import com.pmq.edition.model.Edition;
 
 @Service
 public class EditionBO {
+	// logger
+	private Logger logger = LoggerFactory.getLogger(EditionBO.class);
+	
 	// EditionDAO 연결
 	@Autowired
 	private EditionDAO editionDAO;
@@ -61,5 +66,33 @@ public class EditionBO {
 		return editionDAO.selectEdition(editionId);
 	}
 	
-	
+	// update edition
+	public void updateEdition(int editionId,int userId, String userLoginId, MultipartFile file, String subject, String category,int publishingDate, String content) {
+		
+		// edition 유무 검증
+		Edition edition = getEdition(editionId);
+		if (edition == null) {
+			logger.error("[글 수정] edition is null. editionId:{}", editionId); 
+			return;
+		}
+		
+		// file이 있으면 업로드 후 thumbnailPath를 얻어와야한다.
+		String thumbnailPath = null;
+		if(file != null) {
+			try {
+				thumbnailPath = fileManagerService.saveFile(userLoginId, file);
+				
+				// 기존에 있던 파일 제거 -> thumbnailPath가 존재 && 기존에 파일이 있을 시
+				if(thumbnailPath != null && edition.getThumbnailPath() != null) {
+					// 업로드가 실패할 수 있으므로, 업로드 성공 후 제거
+					fileManagerService.deleteFile(edition.getThumbnailPath());
+				}
+			} catch (IOException e) {
+				
+			}
+		}
+		
+		editionDAO.updateEdition(editionId, userId, userLoginId, thumbnailPath, subject, category, publishingDate, content);
+		
+}
 }	

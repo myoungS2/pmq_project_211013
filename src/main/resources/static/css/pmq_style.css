@@ -36,6 +36,9 @@ section {width:250px;}
 #startSubscribeBtn {color:#fff;}
 #cancelSubscribeBtn {color:#fff;}
 
+/* edition update/ delete */
+#updateBtn {color:#fff;}
+
 /* publication */
 #publicationCreateSection {width:600px;}
 #draftBtn {color:#fff;}

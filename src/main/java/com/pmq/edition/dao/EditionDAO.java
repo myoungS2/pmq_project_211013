@@ -41,4 +41,15 @@ public interface EditionDAO {
 	// select edition by editionId
 	public Edition selectEdition(int id);
 	
+	// update Edition
+	public void updateEdition(
+			@Param("id") int editionId,
+			@Param("userId") int userId,
+			@Param("userLoginId") String userLoginId,
+			@Param("thumbnailPath")String thumbnailPath,
+			@Param("subject")String subject,
+			@Param("category")String category,
+			@Param("publishingDate")int publishingDate,
+			@Param("content")String content);
+	
 }

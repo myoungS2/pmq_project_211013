@@ -9,10 +9,10 @@
 		</div>
 		<%-- 수정/삭제 버튼 , publisher 프로필사진 + nickname, 좋아요 --%>
 		<div class="d-flex justify-content-between align-items-center">
-			<%-- edition alter, delete --%>
+			<%-- edition alter, delete btns --%>
 			<div>
 				<div class="mt-3">
-					<a href="#" id="editionAltBtn" type="button" class="btn btn-dark">수정</a>
+					<a href="/edition/update_view?editionId=${editionInfo.id}&userId=${editionInfo.userId}" id="editionAltBtn" type="button" class="btn btn-dark">수정</a>
 				</div>
 				<div class="mt-3">
 					<a href="#" id="editionDelBtn" type="button" class="btn btn-dark">삭제</a>
@@ -66,7 +66,7 @@
 			</div>
 			<%-- publication create 버튼(클릭시 publication create 화면이동) --%>
 			<div>
-				<a href="#" id="createPublicationBtn" type="button" class="btn btn-dark">Excel</a>
+				<a href="/publication/create_view" id="createPublicationBtn" type="button" class="btn btn-dark">글쓰기</a>
 			</div>
 		</div>
 		<%-- publication subject + state (상태가 임시저장의 경우 클릭가능 -> publication update 화면이동 --%>

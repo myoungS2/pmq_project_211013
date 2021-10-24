@@ -63,4 +63,22 @@
 		WHERE 
 		 	`id` = #{id}
  	</select>
+ 	<update id="updateEdition" parameterType="map">
+ 		UPDATE `edition`
+ 		SET
+ 			`userId` = #{userId}
+	 		,`userLoginId`  = #{userLoginId}
+	 		<if test="thumbnailPath != null"> <!-- el표현식 아니고 그냥 thumbnailPath를 가져오면 됨 -->
+ 			,`thumbnailPath` = #{thumbnailPath}
+ 			</if>
+	 		,`subject` = #{subject}
+	 		,`category` = #{category}
+	 		,`publishingDate` = #{publishingDate}
+	 		,`content` = #{content}
+	 		,`updatedAt` = NOW()
+	 		
+ 		WHERE
+ 			`id` = #{id} 
+ 			AND `userId` = #{userId}
+ 	</update>
  </mapper>

@@ -25,7 +25,11 @@ public class EditionController {
 	@Autowired
 	private UserBO userBO;
 	
-	// 에디션 글 작성 뷰
+	/**
+	 * edition create view
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/create_view")
 	public String editionCreateView(Model model) {
 		
@@ -33,7 +37,14 @@ public class EditionController {
 		return "/template/layout_edition";
 	}
 	
-	// 에디션 디테일 뷰
+	/**
+	 * edition detail view
+	 * @param userId
+	 * @param editionId
+	 * @param model
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/detail_view")
 	public String editionDetailView(
 			// 클릭한 글이 어떤 글인지, 그 글을 누가 썼는지 넘겨받기
@@ -69,13 +80,30 @@ public class EditionController {
 		
 		// 발행글 리스트
 		
-		
-		
-		
-		
 		return "/template/layout_edition";
 		
 	}
 	
-	
+	// edition update view
+	@RequestMapping("/update_view")
+	public String editionUpdateView(
+			// 클릭한 글이 어떤 글인지, 그 글을 누가 썼는지 넘겨받기
+			@RequestParam("userId") int userId,
+			@RequestParam("editionId") int editionId,
+			Model model,
+			HttpServletRequest request) {
+		
+		// edition가져오기 -> 넘겨받은 파라미터
+		Edition editionInfo = editionBO.getEdition(editionId);
+		model.addAttribute("editionInfo", editionInfo);
+		
+		// edition 작성 user(publisher)정보 가져오기 -> 넘겨받은 파라미터
+		User publisherInfo = userBO.getPublisher(userId);
+		model.addAttribute("publisherInfo", publisherInfo);
+		
+		
+		model.addAttribute("viewName", "edition/update");
+		
+		return "/template/layout_edition";
+	}
 }

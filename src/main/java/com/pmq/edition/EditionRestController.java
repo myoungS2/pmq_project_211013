@@ -103,7 +103,7 @@ public class EditionRestController {
 			@RequestParam("editionId") int editionId){
 		
 		// delete DB
-		editionBO;
+		editionBO.deleteEdition(editionId);
 		
 		Map<String, Object> result = new HashMap<>();
 		result.put("result", "success");

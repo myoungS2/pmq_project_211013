@@ -81,4 +81,11 @@
  			`id` = #{id} 
  			AND `userId` = #{userId}
  	</update>
+ 	<delete id="deleteEdition" parameterType="int">
+ 		DELETE
+ 		FROM
+ 			`edition`
+ 		WHERE
+ 			`id` = #{id}
+ 	</delete>
  </mapper>

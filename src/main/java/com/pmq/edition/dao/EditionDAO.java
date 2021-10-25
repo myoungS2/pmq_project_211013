@@ -12,7 +12,7 @@ import com.pmq.edition.model.Edition;
 public interface EditionDAO {
 	
 	/**
-	 * insert Edition
+	 * insert edition
 	 * @param userId
 	 * @param userNickname
 	 * @param thumbnailPath
@@ -33,15 +33,29 @@ public interface EditionDAO {
 	
 
 	/**
-	 * select Edition List
+	 * select edition List
 	 * @return
 	 */
 	public List<Edition> selectEditionList();
 	
-	// select edition by editionId
+	/**
+	 * select edition by editionId
+	 * @param id
+	 * @return
+	 */
 	public Edition selectEdition(int id);
 	
-	// update Edition
+	/**
+	 * update edition
+	 * @param editionId
+	 * @param userId
+	 * @param userLoginId
+	 * @param thumbnailPath
+	 * @param subject
+	 * @param category
+	 * @param publishingDate
+	 * @param content
+	 */
 	public void updateEdition(
 			@Param("id") int editionId,
 			@Param("userId") int userId,
@@ -51,5 +65,8 @@ public interface EditionDAO {
 			@Param("category")String category,
 			@Param("publishingDate")int publishingDate,
 			@Param("content")String content);
+	
+	// delete Edition
+	public void deleteEdition(int id);
 	
 }

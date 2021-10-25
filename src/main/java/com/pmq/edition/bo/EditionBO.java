@@ -91,7 +91,7 @@ public class EditionBO {
 		}
 		
 		// file이 있으면 업로드 후 thumbnailPath를 얻어와야한다.
-		String thumbnailPath = null;
+		String thumbnailPath = edition.getThumbnailPath();
 		if(file != null) {
 			try {
 				thumbnailPath = fileManagerService.saveFile(userLoginId, file);
@@ -105,10 +105,35 @@ public class EditionBO {
 				
 			}
 		}
-		
+		// update DB
 		editionDAO.updateEdition(editionId, userId, userLoginId, thumbnailPath, subject, category, publishingDate, content);
 		
 	}
 	
-	// delete edition
-}	
+	//delete edition
+	public void deleteEdition(int editionId) {
+		// editionId로 edition을 가져온다.
+		Edition edition = getEdition(editionId);
+		
+		// null 검사
+		if (edition == null) {
+			logger.error("[delete edition] 삭제할 게시물이 없습니다. {}", editionId);
+			return;
+		}
+		
+		// 썸네일 삭제
+		String thumbnailPath = edition.getThumbnailPath();
+		if (thumbnailPath != null) {
+			try {
+				fileManagerService.deleteFile(thumbnailPath);
+			} catch (IOException e) {
+				logger.error("[delete edition] 썸네일 삭제 실패 editionId : {}, path: {}", editionId, thumbnailPath);
+			}
+		}
+		
+		// delete DB
+		editionDAO.deleteEdition(editionId);
+	}	
+	
+	
+}

@@ -15,7 +15,7 @@
 					<a href="/edition/update_view?editionId=${editionInfo.id}&userId=${editionInfo.userId}" id="editionAltBtn" type="button" class="btn btn-dark">수정</a>
 				</div>
 				<div class="mt-3">
-					<a href="#" id="editionDelBtn" type="button" class="btn btn-dark">삭제</a>
+					<a href="#" id="editionDelBtn" type="button" class="btn btn-dark" data-edition-id="${editionInfo.id}">삭제</a>
 				</div>
 			</div>
 			<%-- publisher info --%>
@@ -75,3 +75,41 @@
 		</div>
 	</div>
 </div>
+<script>
+	$(document).ready(function(){
+		
+		// 삭제
+		$('#editionDelBtn').on('click', function(e){
+			e.preventDefault(); 
+			
+			
+			// 어떤 edition을 삭제하는지에 대한 정보
+			let editionId = $(this).data('edition-id');
+			// alert(editionId); 
+			
+			// 서버에 요청
+			$.ajax({
+				type: 'delete'
+				, url: '/edition/delete'
+				, data: {'editionId': editionId}
+				, success: function(data){
+					if(data.result == 'success'){
+						// 삭제 후 timeline 이동
+						alert("발행물 삭제가 완료되었습니다.");
+						location.href= '/timeline/view';
+					}
+				}
+				, error: function(e){
+					
+				}
+				
+			}); // edition delete ajax close
+			
+			
+		}); // editionDelBtn close
+		
+		
+		
+	}); // document close
+
+</script>

@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -62,7 +62,17 @@ public class EditionRestController {
 		return result;
 	}
 	
-	// update edition
+	/**
+	 * update edition
+	 * @param editionId
+	 * @param file
+	 * @param subject
+	 * @param category
+	 * @param publishingDate
+	 * @param content
+	 * @param request
+	 * @return
+	 */
 	@PostMapping("/update")
 	public Map<String, Object> editionUpdate(
 			@RequestParam("editionId") int editionId,
@@ -87,4 +97,18 @@ public class EditionRestController {
 		return result;
 	}
 	
+	// delete edition
+	@DeleteMapping("/delete")
+	public Map<String, Object> delete(
+			@RequestParam("editionId") int editionId){
+		
+		// delete DB
+		editionBO;
+		
+		Map<String, Object> result = new HashMap<>();
+		result.put("result", "success");
+		
+		
+		return result;
+	}
 }

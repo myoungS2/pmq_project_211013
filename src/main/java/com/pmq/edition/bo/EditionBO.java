@@ -27,7 +27,7 @@ public class EditionBO {
 	private FileManagerService fileManagerService;
 	
 	/**
-	 * create Edition
+	 * create edition
 	 * @param userId
 	 * @param userNickname
 	 * @param file
@@ -54,19 +54,33 @@ public class EditionBO {
 	}
 	
 	/**
-	 * get Edition List
+	 * get edition List
 	 * @return
 	 */
 	public List<Edition> getEditionList(){
 		return editionDAO.selectEditionList();
 	}
 	
-	// select edition by editionId
+	/**
+	 * select edition by editionId
+	 * @param editionId
+	 * @return
+	 */
 	public Edition getEdition(int editionId) {
 		return editionDAO.selectEdition(editionId);
 	}
 	
-	// update edition
+	/**
+	 * update edition
+	 * @param editionId
+	 * @param userId
+	 * @param userLoginId
+	 * @param file
+	 * @param subject
+	 * @param category
+	 * @param publishingDate
+	 * @param content
+	 */
 	public void updateEdition(int editionId,int userId, String userLoginId, MultipartFile file, String subject, String category,int publishingDate, String content) {
 		
 		// edition 유무 검증
@@ -94,5 +108,7 @@ public class EditionBO {
 		
 		editionDAO.updateEdition(editionId, userId, userLoginId, thumbnailPath, subject, category, publishingDate, content);
 		
-}
+	}
+	
+	// delete edition
 }	

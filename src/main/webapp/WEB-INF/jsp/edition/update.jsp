@@ -32,7 +32,7 @@
 		</div>	
 		<%-- 발행일자 --%>
 		<div class="d-flex mt-2 align-items-center">
-			<span>발행일자 매월</span><input type="text" id="publishDateInput" name="date" class="form-control col-5 ml-4" value="${editionInfo.publishingDate} 일">
+			<span>발행일자 매월</span><input type="text" id="publishDateInput" name="date" class="form-control col-5 ml-4" value="${editionInfo.publishingDate}" placeholder="              일">
 		</div>
 		<%-- 발행물소개 --%>
 		<%-- 클릭시 지워지게 --%>
@@ -43,7 +43,7 @@
 		</div>
 		<%-- 취소 버튼 -> 다시 선택하고 들어온 edition으로 돌아가기 --%>
 		<div class="d-flex justify-content-center mt-3">
-				<a href="" id="cancelBtn" class="btn btn-dark w-100">취소하기</a>
+				<a href="/edition/detail_view?editionId=${editionInfo.id}&userId=${publisherInfo.id}" id="cancelBtn" class="btn btn-dark w-100">취소하기</a>
 		</div>
 	</div>	
 </div>
@@ -147,6 +147,7 @@ $(document).ready(function(){
 			// 서버에 요청
 			// 폼태그 만들기
 			let formData = new FormData();
+			formData.append("editionId",editionId);
 			formData.append("file", $('#file')[0].files[0]);
 			formData.append("subject", subject);
 			formData.append("category", editionType);
@@ -156,7 +157,7 @@ $(document).ready(function(){
 			// ajax 보내는 부분 다시볼 것!
 			$.ajax({
 				url:'/edition/update'
-				, method: 'post'
+				, method: 'POST'
 				, data: formData
 				, enctype: 'multipart/form-data' // 파일 업로드를 위한 필수 설정
 				, processData: false // 파일 업로드를 위한 필수 설정
@@ -170,7 +171,7 @@ $(document).ready(function(){
 				, error: function(e){
 				
 				}
-			});	// ajax close
+			});	// edition update ajax close
 			
 		}); // updateBtn close
 		

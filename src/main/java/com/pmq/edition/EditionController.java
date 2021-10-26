@@ -11,12 +11,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pmq.edition.bo.EditionBO;
 import com.pmq.edition.model.Edition;
+import com.pmq.subscribe.bo.SubscribeBO;
+import com.pmq.subscribe.model.Subscribe;
 import com.pmq.user.bo.UserBO;
 import com.pmq.user.model.User;
 
 @RequestMapping("/edition")
 @Controller
 public class EditionController {
+	// SubscribeBO 연결
+	@Autowired
+	private SubscribeBO subscribeBO;
+	
 	// EditionBO 연결
 	@Autowired
 	private EditionBO editionBO;
@@ -72,9 +78,14 @@ public class EditionController {
 			model.addAttribute("viewName", "edition/subscriber_detail");
 		}
 		
+		// 구독 (여부) -> 취소하기, 구독시작 버튼을 여부에 따라 보여주게 됨
+		boolean existSubscribe = subscribeBO.existSubscribe(userInfo.getId(), editionId);
+		model.addAttribute("existSubscribe", existSubscribe);
+		
 		// 좋아요 (여부)
 		
 		// 좋아요 (count)
+		
 		
 		// 구독자 리스트
 		

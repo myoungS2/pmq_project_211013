@@ -97,7 +97,11 @@ public class EditionRestController {
 		return result;
 	}
 	
-	// delete edition
+	/**
+	 * delete edtion
+	 * @param editionId
+	 * @return
+	 */
 	@DeleteMapping("/delete")
 	public Map<String, Object> delete(
 			@RequestParam("editionId") int editionId){

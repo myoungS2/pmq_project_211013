@@ -48,7 +48,7 @@
 	</div>	
 </div>
 <script>
-$(document).ready(function(){
+	$(document).ready(function(){
 		
 		// 썸네일 이미지
 		// fileUploadBtn 버튼 -> 파일 선택 창
@@ -175,6 +175,6 @@ $(document).ready(function(){
 			
 		}); // updateBtn close
 		
-}); // document close
+	}); // document close
 
 </script>

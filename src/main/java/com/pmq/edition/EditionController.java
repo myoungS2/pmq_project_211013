@@ -72,16 +72,16 @@ public class EditionController {
 		
 		// user Role정보 가져와서 각각 다른 viewName내려보내주기 -> 로그인 된 유저정보
 		User userInfo = userBO.getUser(loginUserId);
-		if (userInfo.getRole().equals("publisher")) {
-			model.addAttribute("viewName", "edition/publisher_detail");
-		} else {
-			model.addAttribute("viewName", "edition/subscriber_detail");
-		}
+		model.addAttribute("userInfo",userInfo);
+			if (userInfo.getRole().equals("publisher")) {
+				model.addAttribute("viewName", "edition/publisher_detail");
+			} else {
+				model.addAttribute("viewName", "edition/subscriber_detail");
+			}
 		
 		// 구독 (여부) -> 취소하기, 구독시작 버튼을 여부에 따라 보여주게 됨
-		boolean existSubscribe = subscribeBO.existSubscribe(userInfo.getId(), editionId);
-		model.addAttribute("existSubscribe", existSubscribe);
-		
+
+			
 		// 좋아요 (여부)
 		
 		// 좋아요 (count)

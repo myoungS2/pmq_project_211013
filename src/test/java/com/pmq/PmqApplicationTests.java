@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.pmq.subscribe.bo.SubscribeBO;
+import com.pmq.subscribe.dao.SubscribeDAO;
 import com.pmq.user.bo.UserBO;
 import com.pmq.user.model.User;
 
@@ -50,4 +52,7 @@ class PmqApplicationTests {
 		// assertNotNull(user);
 	}
 	
+
+
 }
+

@@ -10,14 +10,15 @@
 		<%-- 수정/삭제 버튼 , publisher 프로필사진 + nickname, 좋아요 --%>
 		<div class="d-flex justify-content-between align-items-center mr-3">
 			<%-- 구독신청버튼/ 구독취소버튼(신청이 기존에 되었을 때 노출) : 로그인시에만 노출 --%>
+			<%-- 현재 로그인 된 사용자(구독자) 정보 잘 내려오는 것 확인 <h1>${userInfo.id}</h1> --%>
 			<c:if test="${not empty userInfo.id}">
 				<div>
-					<c:if test="${existSubscribe eq false}">
+					<%-- <c:if test="${existSubscribe eq false}"> --%>
 						<a href="#" id="startSubscribeBtn" type="button" class="btn btn-dark" data-edition-id="${editionInfo.id}" data-user-id="${userInfo.id}">구독시작</a>
-					</c:if>
-					<c:if test="${existSubscribe eq true}">
+					<%-- </c:if> --%>
+					<%-- <c:if test="${existSubscribe eq true}"> --%>
 						<a href="#" id="cancelSubscribeBtn" type="button" class="btn btn-dark d-none" data-edition-id="${editionInfo.id}" data-user-id="${userInfo.id}">구독취소</a>
-					</c:if>
+					<%-- </c:if> --%>
 				</div>
 			</c:if>
 			<%-- publisher info --%>
@@ -36,8 +37,16 @@
 			<div class="text-center">
 				<%-- 좋아요 수  --%>
 				<div><small>123</small></div>
-				<%-- full heart img --%>
-				<div><img src="/static/images/fullHeartIcon.png" alt="fullheart" width="30" height="30"></div>
+				
+				<div>
+					<a href="#" class="like-btn" data-edition-id="${editionInfo.id}" data-user-id="${userInfo.id}">
+					<%-- empty heart img (좋아요x) --%>
+						<img src="/static/images/emptyHeartIcon.png" alt="emptyheart" width="30" height="30">
+					<%-- full heart img (좋아요o) --%>
+						<img src="/static/images/fullHeartIcon.png" alt="fullheart" width="30" height="30">
+					</a>
+				</div>
+						
 			</div>
 		</div>
 		<%-- edition thumbnail --%>
@@ -52,20 +61,63 @@
 </div>
 <script>
 	$(document).ready(function(){
+		// 좋아요
+		$('.like-btn').on('click', function(e){
+			e.preventDefault();
+			
+			// 어떤 글에 좋아요를 눌렀는지..! -> $('.like-btn')으로 이벤트를 잡게되면, 첫번째 것에만 계속 동작하게 됨.
+			let editionId = $(this).data('edition-id');
+			let userId = $(this).data('user-id');
+			
+			console.log(editionId);
+			console.log(userId);
+			
+			if (userId == ''){
+				alert("로그인 후에 사용할 수 있는 기능입니다.");
+				return;
+			}
+			
+			// 서버에 요청
+			$.ajax({
+				type:'post'
+				, url: '/like/like'
+				, data: {"editionId" : editionId}
+				, success: function(data){
+					if (data.result == 'success'){
+						location.reload();
+					}
+				}
+				, error: function(e){
+					
+				}
+			}); // like ajax close
+			
+		}); // like-btn close
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		// 구독시작, 취소
-		$('#startSubscribeBtn').on('click', function(){
+		$('#startSubscribeBtn').on('click', function(e){
+			e.preventDefault();
+			
 			// 어떤 edition을 구독했는지에 대한 정보
 			let editionId = $(this).data('edition-id'); 
-			console.log("editionId:" + editionId);
 			
 			// 누가 구독을 시작했는지에 대한 정보
-			let userId = $(this).data('user-id'); 
+			let userId = $(this).data('user-id');
+			
+			console.log("editionId:" + editionId);
 			console.log("userId:" + userId);
 			
 			// 서버에 요청
 			$.ajax({
-				type: 'POST'
+				type: 'post'
 				,url: '/subscribe/start'
 				, data: {'editionId': editionId}
 				, success: function(data){
@@ -78,6 +130,7 @@
 					
 				}
 			}); // start subscribe ajax close
+			
 		}); // startSubscribeBtn close
 		
 		

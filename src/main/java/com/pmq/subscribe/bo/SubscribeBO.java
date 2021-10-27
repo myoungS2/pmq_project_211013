@@ -10,21 +10,21 @@ public class SubscribeBO {
 	// SubscribeDAO 연결
 	private SubscribeDAO subscribeDAO;
 	
-	// exist subscribe -> 구독 여부
-	public boolean existSubscribe(int userId, int editionId) {
-		int count = subscribeDAO.selectSubscribeByEditionIdOrUserId(userId, editionId);
-		return count > 0? true: false;
-	}
-	
 	// insert subscribe
-	public void SubscribeYN(int userId, String userLoginId, int editionId) {
+	public void addOrDelSubscribe(int userId, String userLoginId, int editionId) {
 		
-		boolean existSubscribe = existSubscribe(editionId, userId);
+		boolean existSubscribe = existSubscribe(userId, editionId);
 		
 		if (existSubscribe != true) {
 			// 구독 중이지 않을 때 -> insert DB
 			subscribeDAO.insertSubscribe(userId, userLoginId, editionId);
 		}
+	}
+	
+	// exist subscribe -> 구독 여부
+	public boolean existSubscribe(int userId, int editionId) {
+		int count = subscribeDAO.selectSubscribeByEditionIdOrUserId(userId, editionId);
+		return count > 0? true: false;
 	}
 	
 	

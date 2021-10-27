@@ -10,6 +10,9 @@
  			`subscribe`
  		WHERE
  			`editionId` = #{editionId}
+ 			<if test="userId != null">
+ 				AND `userId` = #{userId}
+ 			</if>
 	</select>
 	<insert id="insertSubscribe" parameterType="map">
  		INSERT INTO `subscribe`

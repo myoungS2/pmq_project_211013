@@ -1,5 +1,7 @@
 package com.pmq.edition;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pmq.edition.bo.EditionBO;
 import com.pmq.edition.model.Edition;
+import com.pmq.like.bo.LikeBO;
+import com.pmq.like.model.Like;
 import com.pmq.subscribe.bo.SubscribeBO;
 import com.pmq.subscribe.model.Subscribe;
 import com.pmq.user.bo.UserBO;
@@ -19,6 +23,10 @@ import com.pmq.user.model.User;
 @RequestMapping("/edition")
 @Controller
 public class EditionController {
+	// LikeBO 연결
+	@Autowired
+	private LikeBO likeBO;
+	
 	// SubscribeBO 연결
 	@Autowired
 	private SubscribeBO subscribeBO;
@@ -80,14 +88,19 @@ public class EditionController {
 			}
 		
 		// 구독 (여부) -> 취소하기, 구독시작 버튼을 여부에 따라 보여주게 됨
-
-			
+		Boolean existSubscribe =  subscribeBO.existSubscribe(userInfo.getId(), editionId);
+		model.addAttribute("existSubscribe", existSubscribe);
+		
 		// 좋아요 (여부)
-		
+		Boolean existLike = likeBO.existLike(editionId, userInfo.getId());
+		model.addAttribute("existLike" ,existLike);
 		// 좋아요 (count)
-		
+		int likeCount = likeBO.getLikeCountByEditionId(editionId);
+		model.addAttribute("likeCount", likeCount);
 		
 		// 구독자 리스트
+		List<Subscribe> subscriberList = subscribeBO.getSubscribeList(editionId);
+		model.addAttribute("subscriberList", subscriberList);
 		
 		// 발행글 리스트
 		

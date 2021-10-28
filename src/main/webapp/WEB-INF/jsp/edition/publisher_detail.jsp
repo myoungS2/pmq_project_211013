@@ -56,9 +56,11 @@
 			</div>
 		</div>
 		<%-- subscriber 프로필사진 + nickname (클릭시 userProfile 화면이동) --%>
-		<div>
-			Subscribers List
-		</div>
+		<c:forEach var="subscriber" items="${subscriberList}">
+			<div>
+				
+			</div>
+		</c:forEach>
 		<%-- publication list --%>
 		<div class="d-flex justify-content-around mt-3">
 			<div>

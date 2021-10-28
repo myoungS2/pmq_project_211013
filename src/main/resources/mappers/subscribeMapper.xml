@@ -30,4 +30,24 @@
  			, now()
  		)
  	</insert>	
+ 	<delete id="deleteSubscribe" parameterType="map">
+ 		DELETE
+ 		FROM
+ 			`subscribe`
+ 		WHERE
+ 			`editionId` = #{editionId}
+ 			AND `userId` = #{userId}
+ 	</delete>
+ 	<select id="selectSubscribeList" parameterType="int" resultType="com.pmq.subscribe.model.Subscribe">
+ 		SELECT 
+ 			`id`
+			, `userId`
+			, `userLoginId`
+			, `editionId`
+			, `createdAt`
+ 		FROM
+ 			`subscribe`
+ 		WHERE
+ 			`editionId`	= #{editionId}
+ 	</select>
 </mapper>

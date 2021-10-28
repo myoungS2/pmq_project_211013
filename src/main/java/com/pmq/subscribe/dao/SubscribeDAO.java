@@ -1,7 +1,11 @@
 package com.pmq.subscribe.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import com.pmq.subscribe.model.Subscribe;
 
 @Repository
 public interface SubscribeDAO {
@@ -16,4 +20,12 @@ public interface SubscribeDAO {
 			@Param("userId") int userId,
 			@Param("userLoginId") String userLoginId,
 			@Param("editionId") int editionId);
+	
+	// delete subscribe
+	public void deleteSubscribe(
+			@Param("userId") int userId,
+			@Param("editionId") int editionId);
+	
+	// select subscribe List
+	public List<Subscribe> selectSubscribeList(int editionId);
 }

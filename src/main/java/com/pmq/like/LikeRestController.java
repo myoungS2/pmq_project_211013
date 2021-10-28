@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,7 @@ public class LikeRestController {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	// LikeBO 연결
+	@Autowired
 	private LikeBO likeBO;
 	
 	@RequestMapping("/like")
@@ -40,7 +42,7 @@ public class LikeRestController {
 		}
 		
 		// like BO
-		likeBO.LikeYn(userId, userNickname, editionId);
+		likeBO.LikeYn(userId, userNickname,editionId);
 		result.put("result", "success");
 		return result;
 		

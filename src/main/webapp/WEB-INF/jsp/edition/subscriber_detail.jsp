@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>       
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>      
+ 
 <div id="editionDetailDiv" class="d-flex justify-content-center">
 	<div>
 		<%-- edition subject --%>
@@ -13,12 +14,14 @@
 			<%-- 현재 로그인 된 사용자(구독자) 정보 잘 내려오는 것 확인 <h1>${userInfo.id}</h1> --%>
 			<c:if test="${not empty userInfo.id}">
 				<div>
-					<%-- <c:if test="${existSubscribe eq false}"> --%>
+					<%-- 구독중이지 않을 때 -> 구독시작 버튼 --%>
+					<c:if test="${existSubscribe eq false}">
 						<a href="#" id="startSubscribeBtn" type="button" class="btn btn-dark" data-edition-id="${editionInfo.id}" data-user-id="${userInfo.id}">구독시작</a>
-					<%-- </c:if> --%>
-					<%-- <c:if test="${existSubscribe eq true}"> --%>
-						<a href="#" id="cancelSubscribeBtn" type="button" class="btn btn-dark d-none" data-edition-id="${editionInfo.id}" data-user-id="${userInfo.id}">구독취소</a>
-					<%-- </c:if> --%>
+					</c:if>
+					<%-- 구독중일 때-> 구독취소 버튼 --%>
+					<c:if test="${existSubscribe eq true}">
+						<a href="#" id="cancelSubscribeBtn" type="button" class="btn btn-dark" data-edition-id="${editionInfo.id}" data-user-id="${userInfo.id}">구독취소</a>
+					</c:if>
 				</div>
 			</c:if>
 			<%-- publisher info --%>
@@ -36,14 +39,17 @@
 			<%-- 좋아요(토글) --%>
 			<div class="text-center">
 				<%-- 좋아요 수  --%>
-				<div><small>123</small></div>
-				
+				<div><small>${likeCount}</small></div>
 				<div>
 					<a href="#" class="like-btn" data-edition-id="${editionInfo.id}" data-user-id="${userInfo.id}">
 					<%-- empty heart img (좋아요x) --%>
+					<c:if test="${existLike eq false}">
 						<img src="/static/images/emptyHeartIcon.png" alt="emptyheart" width="30" height="30">
+					</c:if>
 					<%-- full heart img (좋아요o) --%>
+					<c:if test="${existLike eq true}">
 						<img src="/static/images/fullHeartIcon.png" alt="fullheart" width="30" height="30">
+					</c:if>
 					</a>
 				</div>
 						
@@ -65,7 +71,7 @@
 		$('.like-btn').on('click', function(e){
 			e.preventDefault();
 			
-			// 어떤 글에 좋아요를 눌렀는지..! -> $('.like-btn')으로 이벤트를 잡게되면, 첫번째 것에만 계속 동작하게 됨.
+			// 어떤 글에 좋아요를 눌렀는지..! -> $('.like-btn')으로 이벤트를 잡게되면, 클래스 이기 때문에 첫번째 것에만 계속 동작하게 됨.
 			let editionId = $(this).data('edition-id');
 			let userId = $(this).data('user-id');
 			
@@ -84,6 +90,7 @@
 				, data: {"editionId" : editionId}
 				, success: function(data){
 					if (data.result == 'success'){
+						alert("좋아요!");
 						location.reload();
 					}
 				}
@@ -95,14 +102,7 @@
 		}); // like-btn close
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		// 구독시작, 취소
+		// 구독시작
 		$('#startSubscribeBtn').on('click', function(e){
 			e.preventDefault();
 			
@@ -122,7 +122,7 @@
 				, data: {'editionId': editionId}
 				, success: function(data){
 					if (data.result == 'success'){
-						alert("구독이 시작되었습니다.")
+						alert("구독이 시작되었습니다.");
 						location.reload();
 					}
 				}
@@ -133,7 +133,36 @@
 			
 		}); // startSubscribeBtn close
 		
-		
+		// 구독취소
+		$('#cancelSubscribeBtn').on('click', function(e){
+			e.preventDefault();
+			
+			// 어떤 edition을 취소했는지에 대한 정보 
+			let editionId = $(this).data('edition-id'); 
+			
+			// 누가 구독을 취소했는지에 대한 정보
+			let userId = $(this).data('user-id');
+			
+			console.log("editionId:" + editionId);
+			console.log("userId:" + userId);
+			
+			// 서버에 요청
+			$.ajax({
+				type: 'post'
+				,url: '/subscribe/start'
+				, data: {'editionId': editionId}
+				, success: function(data){
+					if (data.result == 'success'){
+						alert("구독이 취소되었습니다.");
+						location.reload();
+					}
+				}
+				, error: function(e){
+					
+				}
+			}); // cancel subscribe ajax close
+			
+		}); // cancelSubscribeBtn close
 		
 	}); // document close
 </script>

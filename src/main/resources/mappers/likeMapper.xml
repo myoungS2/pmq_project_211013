@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- <mapper namespace="com.marondalgram.like.dao.LikeDAO">
+ <mapper namespace="com.pmq.like.dao.LikeDAO">
  	<select id="selectLikeCountByEditionIdOrUserId" parameterType="map" resultType="int">
  		SELECT
  			count(1)
@@ -19,24 +18,24 @@
  		(
  			 `userId`
  			, `userNickname`
- 			,`editionId`
+ 			, `editionId`
  			, `createdAt`
  		)
  		VALUES
  		(
  			 #{userId}
  			, #{userNickname}
- 			,#{editionId}
+ 			, #{editionId}
  			, now()
  		)
  	</insert>
- 	
  	<delete id="deleteLikeByEditionIdUserId" parameterType="map">
  		DELETE
 		FROM
 			`like`
 		WHERE
-			postId = #{editionId}
-			AND userId = #{userId}
+			`editionId` = #{editionId}
+			AND `userId` = #{userId}
  	</delete>
+ 	
  </mapper>

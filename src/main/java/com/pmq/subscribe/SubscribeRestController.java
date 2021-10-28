@@ -8,18 +8,18 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pmq.subscribe.bo.SubscribeBO;
 
-
-
 @RequestMapping("/subscribe")
 @RestController
 public class SubscribeRestController {
 	// SubscribeBO 연결
+	@Autowired
 	private SubscribeBO subscribeBO;
 	
 	// logger
@@ -43,13 +43,10 @@ public class SubscribeRestController {
 			return result;
 		}
 		
-		
 		// insert DB
 		subscribeBO.addOrDelSubscribe(userId, userLoginId, editionId);
-		
 		result.put("result", "success");
 		
 		return result;
-		
 	}
 }

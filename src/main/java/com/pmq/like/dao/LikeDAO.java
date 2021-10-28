@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 public interface LikeDAO {
 	// select DB (LikeCount)
 		public int selectLikeCountByEditionIdOrUserId(
-				@Param("editionId") int editionId,
-				@Param("userId") Integer userId);
+				@Param("userId") Integer userId,
+				@Param("editionId") int editionId);
 		
 		// insert DB
 		public void insertLike(
@@ -18,6 +18,6 @@ public interface LikeDAO {
 		
 		// delete DB
 		public void deleteLikeByEditionIdUserId(
-				@Param("editionId") int editionId,
-				@Param("userId") int userId);
+				@Param("userId") int userId,
+				@Param("editionId") int editionId);
 }

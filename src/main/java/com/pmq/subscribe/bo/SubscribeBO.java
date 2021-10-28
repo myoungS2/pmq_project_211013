@@ -1,16 +1,26 @@
 package com.pmq.subscribe.bo;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pmq.subscribe.dao.SubscribeDAO;
+import com.pmq.subscribe.model.Subscribe;
 
 @Service
 public class SubscribeBO {
 	
 	// SubscribeDAO 연결
+	@Autowired
 	private SubscribeDAO subscribeDAO;
 	
-	// insert subscribe
+	/**
+	 * insert subscribe
+	 * @param userId
+	 * @param userLoginId
+	 * @param editionId
+	 */
 	public void addOrDelSubscribe(int userId, String userLoginId, int editionId) {
 		
 		boolean existSubscribe = existSubscribe(userId, editionId);
@@ -18,14 +28,25 @@ public class SubscribeBO {
 		if (existSubscribe != true) {
 			// 구독 중이지 않을 때 -> insert DB
 			subscribeDAO.insertSubscribe(userId, userLoginId, editionId);
+		} else {
+			subscribeDAO.deleteSubscribe(userId, editionId);
 		}
 	}
 	
-	// exist subscribe -> 구독 여부
+	/**
+	 * exist subscribe -> 구독 여부
+	 * @param userId
+	 * @param editionId
+	 * @return
+	 */
 	public boolean existSubscribe(int userId, int editionId) {
 		int count = subscribeDAO.selectSubscribeByEditionIdOrUserId(userId, editionId);
 		return count > 0? true: false;
 	}
 	
+	// get subscriber List
+	public List<Subscribe> getSubscribeList(int editionId){
+		return subscribeDAO.selectSubscribeList(editionId);
+	}
 	
 }

@@ -33,9 +33,17 @@
 			<%-- 좋아요 --%>
 			<div class="text-center">
 				<%-- 좋아요 수 (발행인은 클릭x) --%>
-				<div><small>123</small></div>
+				<div><small>${likeCount}</small></div>
 				<%-- full heart img --%>
-				<div><img src="/static/images/fullHeartIcon.png" alt="fullheart" width="30" height="30"></div>
+				<div>
+					<c:if test="${likeCount < 0}">
+						<img src="/static/images/emptyHeartIcon.png" alt="emptyheart" width="30" height="30">
+					</c:if>
+					<%-- full heart img (좋아요o) --%>
+					<c:if test="${likeCount >= 1}">
+						<img src="/static/images/fullHeartIcon.png" alt="fullheart" width="30" height="30">
+					</c:if>
+				</div>
 			</div>
 		</div>
 		<%-- edition thumbnail --%>
@@ -57,8 +65,10 @@
 		</div>
 		<%-- subscriber 프로필사진 + nickname (클릭시 userProfile 화면이동) --%>
 		<c:forEach var="subscriber" items="${subscriberList}">
-			<div>
-				
+			<div class="d-flex justify-content-around mt-3">
+				<div><strong>${subscriber.userLoginId}</strong></div>
+				<%-- 날짜 형식 고치기! --%>
+				<div>${subscriber.createdAt}</div>
 			</div>
 		</c:forEach>
 		<%-- publication list --%>

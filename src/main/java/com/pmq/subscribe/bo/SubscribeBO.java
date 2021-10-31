@@ -44,9 +44,14 @@ public class SubscribeBO {
 		return count > 0? true: false;
 	}
 	
-	// get subscriber List
+	/**
+	 * subscribe List
+	 * @param editionId
+	 * @return
+	 */
 	public List<Subscribe> getSubscribeList(int editionId){
 		return subscribeDAO.selectSubscribeList(editionId);
 	}
+	
 	
 }

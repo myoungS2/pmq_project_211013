@@ -1,6 +1,7 @@
 package com.pmq.user.bo;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.pmq.common.FileManagerService;
+import com.pmq.subscribe.bo.SubscribeBO;
 import com.pmq.user.dao.UserDAO;
 import com.pmq.user.model.User;
 
@@ -20,6 +22,10 @@ public class UserBO {
 	// FileManagerService 연결
 	@Autowired
 	private FileManagerService fileManagerService;
+	
+	// subscribeBO 연결
+	@Autowired
+	private SubscribeBO subscribeBO;
 	
 	// UserDAO 연결
 	@Autowired
@@ -96,5 +102,4 @@ public class UserBO {
 	public User getPublisher(int userId) {
 		return userDAO.selectPublisher(userId);
 	}
-	
 }

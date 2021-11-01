@@ -22,11 +22,11 @@
 			<div class="text-center">
 				<%-- 프로필 사진이 없을 때 --%>
 				<c:if test="${empty publisherInfo.profileImgPath}">
-					<div><img src="/static/images/profileIcon.png" alt="프로필아이콘" width="80" height="80"></div>
+					<a href="/user/profile_view?userId=${publisherInfo.id}"><div><img src="/static/images/profileIcon.png" alt="프로필아이콘" width="80" height="80"></div></a>
 				</c:if>
 				<%-- 프로필 사진이 있을 때 --%>
 				<c:if test="${not empty publisherInfo.profileImgPath}">
-					<div><img src="${publisherInfo.profileImgPath}" alt="userProfileImg"></div>
+					<a href="/user/profile_view?userId=${publisherInfo.id}"><div><img src="${publisherInfo.profileImgPath}" alt="userProfileImg"></div></a>
 				</c:if>
 				<div><span class="font-weight-bold">by ${publisherInfo.nickname}</span></div>
 			</div>

@@ -43,3 +43,7 @@ section {width:250px;}
 #publicationCreateSection {width:600px;}
 #draftBtn {color:#fff;}
 #sendOutBtn {color:#fff;}
+
+/* user profile */
+#updateProfileBtn {color:#fff;}
+#signOutBtn {color:#fff;}

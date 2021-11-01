@@ -94,6 +94,7 @@ public class EditionController {
 		// 좋아요 (여부)
 		Boolean existLike = likeBO.existLike(editionId, userInfo.getId());
 		model.addAttribute("existLike" ,existLike);
+		
 		// 좋아요 (count)
 		int likeCount = likeBO.getLikeCountByEditionId(editionId);
 		model.addAttribute("likeCount", likeCount);

@@ -2,6 +2,7 @@ package com.pmq.user.dao;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.pmq.user.model.User;
 
@@ -71,4 +72,13 @@ public interface UserDAO {
 	 */
 	public User selectPublisher(int id);
 	
+	// update user
+	public void updateUser(
+			@Param("id")int id,
+			@Param("profileImgPath")String profileImgPath, 
+			@Param("nickname")String nickname, 
+			@Param("email")String email,
+			@Param("address")String address, 
+			@Param("website")String website,
+			@Param("introduce")String introduce);
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.pmq.common.FileManagerService;
+import com.pmq.edition.model.Edition;
 import com.pmq.subscribe.bo.SubscribeBO;
 import com.pmq.user.dao.UserDAO;
 import com.pmq.user.model.User;
@@ -101,5 +102,35 @@ public class UserBO {
 	 */
 	public User getPublisher(int userId) {
 		return userDAO.selectPublisher(userId);
+	}
+	
+	// update user
+	public void updateUser(int userId, String userLoginId, MultipartFile file, String nickname, String email, 
+			String address, String website, String introduce) {
+			
+			// user 유무 검증
+			User user = getUser(userId);
+			if (user == null) {
+				logger.error("[유저프로필 수정] user is null. userId:{}", userId); 
+				return;
+			}
+		
+			// file이 있으면 업로드 후 thumbnailPath를 얻어와야한다.
+			String profileImgPath = user.getProfileImgPath();
+				if(file != null) {
+					try {
+						profileImgPath = fileManagerService.saveFile(userLoginId, file);
+						
+					// 기존에 있던 파일 제거 -> thumbnailPath가 존재 && 기존에 파일이 있을 시
+					if(profileImgPath != null && user.getProfileImgPath() != null) {
+						// 업로드가 실패할 수 있으므로, 업로드 성공 후 제거
+					fileManagerService.deleteFile(user.getProfileImgPath());
+					}
+					} catch (IOException e) {
+						
+					}
+				}
+				// update DB
+				userDAO.updateUser(userId, profileImgPath, nickname, email, address, website, introduce);
 	}
 }

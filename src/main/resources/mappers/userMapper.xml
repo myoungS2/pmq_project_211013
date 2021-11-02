@@ -112,5 +112,19 @@
 			WHERE
 				`id` = #{id}
  	</select>
- 	
+ 	<update id="updateUser"  parameterType="map">
+ 		UPDATE `user`
+ 		SET
+	 		<if test="profileImgPath != null"> <!-- el표현식 아니고 그냥 profileImgPath를 가져오면 됨 -->
+ 			`profileImgPath` = #{profileImgPath}
+ 			</if>
+	 		,`nickname` = #{nickname}
+	 		,`email` = #{email}
+	 		,`address` = #{address}
+	 		,`website` = #{website}
+	 		,`introduce` = #{introduce}
+	 		,`updatedAt` = NOW()
+	 	WHERE
+	 		`id` = #{id}
+ 	</update>
  </mapper>

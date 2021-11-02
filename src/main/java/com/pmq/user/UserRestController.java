@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -141,5 +142,32 @@ public class UserRestController {
 		
 		return result;
 	}
+	
+	// 프로필 수정
+	@PostMapping("/profile_update")
+	public Map<String, Object> profileUpdate(
+			@RequestParam(value="file", required = false) MultipartFile file,
+			@RequestParam("nickname") String nickname,
+			@RequestParam("email") String email,
+			@RequestParam("address") String address,
+			@RequestParam(value = "website", required = false) String website,
+			@RequestParam(value = "introduce", required = false) String introduce, 
+			HttpServletRequest request,
+			Model model){
+		
+		// session에서 유저 id를 가져온다.
+		HttpSession session = request.getSession(); // edition > create에서 ajax가 잘 작동되면 여기로 들어오게 됨..!(breakPoint)
+		Integer userId = (Integer) session.getAttribute("userId"); // 어디에 session을 넣었는지 잘 확인하기(UserRestController)
+		String userLoginId = (String)session.getAttribute("userLoginId");
+		
+		// update DB
+		userBO.updateUser(userId, userLoginId, file, nickname, email, address, website, introduce);
+		
+		Map<String, Object> result = new HashMap<>();
+		result.put("result", "success");
+		
+		return result;
+	}
+	
 	
 }

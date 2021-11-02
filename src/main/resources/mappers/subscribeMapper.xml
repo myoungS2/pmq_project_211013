@@ -63,10 +63,12 @@
  			`userId` = #{userId}
  	</select>
  	<select id="selectSubscribeEdtionList" resultType="map">
- 		SELECT 
- 			a.`userId`, a.`editionId`, b.`id`, b.`userId`, b.`thumbnailPath`
- 		FROM `subscribe` a, `edition` b	
- 		WHERE 
- 			a.`editionId` = b.`id`
+  		SELECT 
+ 			a.`userId`, a.`editionId`, a.`createdAt`, b.`id`, b.`userId`, b.`thumbnailPath`
+ 		FROM `edition` AS b	
+        LEFT JOIN `subscribe` AS a
+ 		ON a.`editionId` = b.`id`
+ 		ORDER BY	
+ 			a.`createdAt` DESC
  	</select>
 </mapper>

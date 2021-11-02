@@ -51,9 +51,10 @@
 </div>
 <script>
 	$(document).ready(function(){
+		// 기존 카테고리가 선택되어 있게하기
 		// 서버에서 내려오는 값 =  name일치 -> checked
-		// el 
-		
+		let category = '${editionInfo.category}';
+		$('select[name=editionType]').val(category).prop("selected", true);
 		
 		// 썸네일 이미지
 		// fileUploadBtn 버튼 -> 파일 선택 창
@@ -118,10 +119,17 @@
 		// 글 수정
 		$('#updateBtn').on('click', function(){
 			
-			// 썸네일 입력 체크
-		/* 	let fileCheck = document.getElementById("fileCheck").src;
+			// 썸네일 입력 체크 (기존값)
+		 /* 	let fileCheck = document.getElementById("fileCheck").src;
 			if(fileCheck == ''){
 				alert("썸네일을 첨부해주세요.");	
+				return;
+			}  */
+			
+			// 썸네일 입력 체크 (새로운값)
+		/* 	let newFileCheck = document.getElementById("file");
+			if (newFileCheck == ''){
+				alert("새로운 썸네일을 첨부해주세요.");	
 				return;
 			} */
 			

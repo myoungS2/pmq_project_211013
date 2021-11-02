@@ -84,9 +84,7 @@ public class UserController {
 		model.addAttribute("likeList", likeList);
 		
 		List<Map<String, Object>> subscribeEdtionList = subscribeBO.getSubscribeEdtionList();
-//		for (Map<String, Object> map:subscribeEdtionList) {
-//			model.addAttribute(map.get(""))
-//		}
+		model.addAttribute("subscribeEdtionList",subscribeEdtionList);
 
 		// user Role정보 가져와서 각각 다른 viewName내려보내주기 -> 로그인 된 유저정보
 		User userInfo = userBO.getUser(loginUserId);

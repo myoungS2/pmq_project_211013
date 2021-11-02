@@ -38,6 +38,13 @@
 	<div>
 		<small><strong>구독 리스트</strong></small>
 	</div>
+	<c:forEach var="subscribeList" items="${subscribeEdtionList}">
+		<c:forEach var="editionMap" items="${subscribeList}">
+			<div>
+				<img src="${editionMap[thumbnailPath]}" alt="구독썸네일">
+			</div>
+		</c:forEach>
+	</c:forEach>
 	<%-- like list --%>
 	<div>
 		<small><strong>관심 리스트</strong></small>

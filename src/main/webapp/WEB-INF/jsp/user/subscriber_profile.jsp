@@ -38,7 +38,6 @@
 	<div>
 		<small><strong>구독 리스트</strong></small>
 	</div>
-	
 	<%-- like list --%>
 	<div>
 		<small><strong>관심 리스트</strong></small>

@@ -1,10 +1,13 @@
 package com.pmq.like.bo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pmq.like.dao.LikeDAO;
 import com.pmq.like.model.Like;
+import com.pmq.subscribe.model.Subscribe;
 
 @Service
 public class LikeBO {
@@ -32,4 +35,10 @@ public class LikeBO {
 		public int getLikeCountByEditionId(int editionId) {
 			return likeDAO.selectLikeCountByEditionIdOrUserId(null ,editionId); 
 		}
+		
+	// getLikeListByUserid
+		public List<Like> getLikeListByUserId (int loginUserId){
+			return likeDAO.selectLikeListByUserId(loginUserId);
+		}
+	
 }

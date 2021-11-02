@@ -1,6 +1,7 @@
 package com.pmq.subscribe.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -28,4 +29,10 @@ public interface SubscribeDAO {
 	
 	// select subscribe List
 	public List<Subscribe> selectSubscribeList(int editionId);
+	
+	// select subscribeListByUserId 
+	public List<Subscribe> selectSubscribeListByUserId(int userId);
+	
+	// join
+	public List<Map<String, Object>> selectSubscribeEdtionList();
 }

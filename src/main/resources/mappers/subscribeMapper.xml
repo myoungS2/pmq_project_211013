@@ -50,4 +50,23 @@
  		WHERE
  			`editionId`	= #{editionId}
  	</select>
+ 	<select id="selectSubscribeListByUserId" parameterType="int" resultType="com.pmq.subscribe.model.Subscribe">
+ 		SELECT 
+ 			`id`
+			, `userId`
+			, `userLoginId`
+			, `editionId`
+			, `createdAt`
+ 		FROM
+ 			`subscribe`
+ 		WHERE
+ 			`userId` = #{userId}
+ 	</select>
+ 	<select id="selectSubscribeEdtionList" resultType="map">
+ 		SELECT 
+ 			a.`userId`, a.`editionId`, b.`id`, b.`userId`, b.`thumbnailPath`
+ 		FROM `subscribe` a, `edition` b	
+ 		WHERE 
+ 			a.`editionId` = b.`id`
+ 	</select>
 </mapper>

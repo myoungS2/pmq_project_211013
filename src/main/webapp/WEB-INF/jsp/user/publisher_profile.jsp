@@ -38,5 +38,9 @@
 	<div>
 		<small><strong>발행물 리스트</strong></small>
 	</div>
-
+	<c:forEach var="edition" items="${editionList}">
+	<div>
+		<img src="${edition.thumbnailPath}" alt="발행물썸네일"  width="150" height="200"> 
+	</div>
+	</c:forEach>
 </div>

@@ -6,7 +6,9 @@
 		<div>
 		  	<%-- input file을 d-none으로 숨겨둠 --%>
 			<input type="file" id="file" class="d-none"  accept=".jpg,.jpeg,.png,.gif">
-			<a href="#" id="thumbnailUploadBtn"><img src="${editionInfo.thumbnailPath}" alt="이미지파일업데이트" width="350" height="250"></a>
+			<a href="#" id="thumbnailUploadBtn">
+				<img id="fileCheck" src="${editionInfo.thumbnailPath}" alt="이미지파일업데이트" width="350" height="250">
+			</a>
 		</div>
 		<%-- 제목 --%>
 		<div class="mt-2">
@@ -49,6 +51,9 @@
 </div>
 <script>
 	$(document).ready(function(){
+		// 서버에서 내려오는 값 =  name일치 -> checked
+		// el 
+		
 		
 		// 썸네일 이미지
 		// fileUploadBtn 버튼 -> 파일 선택 창
@@ -114,17 +119,19 @@
 		$('#updateBtn').on('click', function(){
 			
 			// 썸네일 입력 체크
-			let fileCheck = document.getElementById("file").value;
-			if(!fileCheck){
+		/* 	let fileCheck = document.getElementById("fileCheck").src;
+			if(fileCheck == ''){
 				alert("썸네일을 첨부해주세요.");	
 				return;
-			}
+			} */
+			
 			// 제목 입력 체크
 			let subject = $('#subjectInput').val();
 			if (subject == ''){
 				alert("발행물 제목을 입력하세요.");
 				return;
 			}
+			
 			// 카테고리 가져오기
 			let editionType = $('select[name=editionType] option:selected').val();
 			// 발행일자 입력 체크

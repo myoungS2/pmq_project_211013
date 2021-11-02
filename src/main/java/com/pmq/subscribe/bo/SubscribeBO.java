@@ -1,6 +1,7 @@
 package com.pmq.subscribe.bo;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,5 +54,14 @@ public class SubscribeBO {
 		return subscribeDAO.selectSubscribeList(editionId);
 	}
 	
+	// getSubscribeListByUserId
+	public List<Subscribe> getSubscribeListByUserId (int loginUserId){
+		return subscribeDAO.selectSubscribeListByUserId(loginUserId);
+	}
+	
+	// join
+	public List<Map<String, Object>> getSubscribeEdtionList(){
+		return subscribeDAO.selectSubscribeEdtionList();
+	}
 	
 }

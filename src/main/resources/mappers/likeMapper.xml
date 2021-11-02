@@ -37,5 +37,16 @@
 			`editionId` = #{editionId}
 			AND `userId` = #{userId}
  	</delete>
- 	
+ 	<select id="selectLikeListByUserId" parameterType="int" resultType="com.pmq.like.model.Like">
+ 		SELECT
+ 			`id`
+			,`userId`
+			,`userNickname`
+			,`editionId`
+			,`createdAt`
+ 		FROM
+ 			`like`
+ 		WHERE
+ 			`userId` = #{userId}
+ 	</select>
  </mapper>

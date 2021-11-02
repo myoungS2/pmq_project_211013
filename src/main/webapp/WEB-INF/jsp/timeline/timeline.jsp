@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%-- edition 가져오기 --%>
+<%-- (전체 발행물) edition 가져오기 --%>
 <c:forEach var="edition" items="${editionList}">
 	<div id="editionFrame">
 		<div id="edtioncard" class="m-3">

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.pmq.edition.model.Edition;
+import com.pmq.subscribe.model.Subscribe;
 
 @Repository
 public interface EditionDAO {
@@ -66,7 +67,13 @@ public interface EditionDAO {
 			@Param("publishingDate")int publishingDate,
 			@Param("content")String content);
 	
-	// delete Edition
+	/**
+	 * delete edition
+	 * @param id
+	 */
 	public void deleteEdition(int id);
+	
+	// selectEditionListByUserId (발행인의 발행글 리스트 가져오기)
+	public List<Edition> selectEditionListByUserId(int userId);
 	
 }

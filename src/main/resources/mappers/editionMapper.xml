@@ -88,4 +88,42 @@
  		WHERE
  			`id` = #{id}
  	</delete>
+ 	<select id="selectEditionListByUserId" parameterType="int" resultType="com.pmq.edition.model.Edition">
+ 		SELECT
+ 			`id`
+			,`userId`
+			,`userLoginId`
+			,`thumbnailPath`
+			,`subject`
+			,`category`
+			,`publishingDate`
+			,`content`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`edition`
+		WHERE
+			`id` = #{id}
+		ORDER BY
+			`createdAt` DESC
+ 	</select>
+ 	<select id="selectEdtionListSubscribe" parameterType="int" resultType="com.pmq.edition.model.Edition">
+ 		SELECT
+ 			`id`
+			,`userId`
+			,`userLoginId`
+			,`thumbnailPath`
+			,`subject`
+			,`category`
+			,`publishingDate`
+			,`content`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`edition`
+		WHERE
+			`userId` = #{userId}
+		ORDER BY
+			`createdAt` DESC
+ 	</select>
  </mapper>

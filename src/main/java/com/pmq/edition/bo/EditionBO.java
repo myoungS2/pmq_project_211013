@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.pmq.common.FileManagerService;
 import com.pmq.edition.dao.EditionDAO;
 import com.pmq.edition.model.Edition;
+import com.pmq.subscribe.model.Subscribe;
 
 @Service
 public class EditionBO {
@@ -134,6 +135,11 @@ public class EditionBO {
 		// delete DB
 		editionDAO.deleteEdition(editionId);
 	}	
+	
+	// getEditionListByUserId (발행인의 발행글 리스트 가져오기)
+	public List<Edition> getEditionListByUserId(int loginUserId) {
+		return editionDAO.selectEditionListByUserId(loginUserId);
+	}
 	
 	
 }

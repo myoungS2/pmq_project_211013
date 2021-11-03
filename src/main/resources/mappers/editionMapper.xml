@@ -103,7 +103,7 @@
 		FROM
 			`edition`
 		WHERE
-			`id` = #{id}
+			`userId` = #{userId}
 		ORDER BY
 			`createdAt` DESC
  	</select>

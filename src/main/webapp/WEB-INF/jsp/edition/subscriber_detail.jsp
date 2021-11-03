@@ -32,7 +32,7 @@
 				</c:if>
 				<%-- 프로필 사진이 있을 때 --%>
 				<c:if test="${not empty publisherInfo.profileImgPath}">
-					<div><img src="${publisherInfo.profileImgPath}" alt="userProfileImg"></div>
+					<div><img src="${publisherInfo.profileImgPath}" alt="userProfileImg" width="80" height="80"></div>
 				</c:if>
 				<div><span class="font-weight-bold">by ${publisherInfo.nickname}</span></div>
 			</div>
@@ -90,7 +90,7 @@
 				, data: {"editionId" : editionId}
 				, success: function(data){
 					if (data.result == 'success'){
-						alert("좋아요!");
+						// alert("좋아요!");
 						location.reload();
 					}
 				}

@@ -40,7 +40,7 @@
 	</div>
 	<c:forEach var="edition" items="${editionList}">
 	<div>
-		<img src="${edition.thumbnailPath}" alt="발행물썸네일"  width="150" height="200"> 
+		<img src="${edition.thumbnailPath}" alt="발행물썸네일" width="150" height="200"> 
 	</div>
 	</c:forEach>
 </div>

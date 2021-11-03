@@ -45,7 +45,7 @@
 
 	<%-- sign out btn --%>
 	<div class="d-flex justify-content-center mt-3">
-		<a id="signOutBtn" class="btn btn-dark w-100">로그아웃</a>
+		<a href="/user/sign_out_view" id="signOutBtn" class="btn btn-dark w-100">로그아웃</a>
 	</div>
 </div>
 
@@ -184,9 +184,6 @@
 				}
 			}); // 프로필수정 ajax close
 			
-		
-		
-		
 		}); // updateProfileBtn close
 		
 		

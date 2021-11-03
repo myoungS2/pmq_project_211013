@@ -149,14 +149,14 @@ public class UserRestController {
 	@PostMapping("/profile_update")
 	public Map<String, Object> profileUpdate(
 			@RequestParam(value="file", required = false) MultipartFile file,
-			@RequestParam("nickname") String nickname,
+			@RequestParam(value="nickname", required = false) String nickname,
 			@RequestParam("email") String email,
 			@RequestParam("address") String address,
 			@RequestParam(value = "website", required = false) String website,
 			@RequestParam(value = "introduce", required = false) String introduce, 
 			HttpServletRequest request,
 			Model model){
-		
+
 		// session에서 유저 id를 가져온다.
 		HttpSession session = request.getSession(); // edition > create에서 ajax가 잘 작동되면 여기로 들어오게 됨..!(breakPoint)
 		Integer userId = (Integer) session.getAttribute("userId"); // 어디에 session을 넣었는지 잘 확인하기(UserRestController)
@@ -170,8 +170,5 @@ public class UserRestController {
 		
 		return result;
 	}
-	
-	// 로그아웃
-	
 	
 }

@@ -126,4 +126,14 @@ public class UserController {
 		return "/template/layout_user";
 		
 	}
+	
+	// 로그아웃
+	@RequestMapping("/sign_out_view")
+	public String signOutView(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.removeAttribute("userLoginId");
+		session.removeAttribute("userId");
+		
+		return "redirect:/user/sign_in_view";
+	}
 }

@@ -112,6 +112,7 @@
 		// 프로필 수정 버튼
 		$('#updateProfileBtn').on('click', function(e){
 			e.preventDefault();	
+			
 			// profileImgPath (nullable)
 			let file = $('#file').val();
 			

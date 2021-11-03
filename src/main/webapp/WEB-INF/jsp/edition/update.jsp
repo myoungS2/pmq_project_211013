@@ -119,19 +119,13 @@
 		// 글 수정
 		$('#updateBtn').on('click', function(){
 			
-			// 썸네일 입력 체크 (기존값)
-		 /* 	let fileCheck = document.getElementById("fileCheck").src;
-			if(fileCheck == ''){
-				alert("썸네일을 첨부해주세요.");	
+			// 썸네일 입력 체크
+			let newFile = $('#file').val();
+			let fileCheck = $('#fileCheck').src;
+			if (newFile == '' && fileCheck == ''){
+				alert("썸네일을 첨부해주세요.");
 				return;
-			}  */
-			
-			// 썸네일 입력 체크 (새로운값)
-		/* 	let newFileCheck = document.getElementById("file");
-			if (newFileCheck == ''){
-				alert("새로운 썸네일을 첨부해주세요.");	
-				return;
-			} */
+			} 
 			
 			// 제목 입력 체크
 			let subject = $('#subjectInput').val();

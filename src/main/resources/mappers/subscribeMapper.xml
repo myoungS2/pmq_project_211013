@@ -62,7 +62,7 @@
  		WHERE
  			`userId` = #{userId}
  	</select>
- 	<select id="selectSubscribeEdtionList" resultType="map">
+<!--  	<select id="selectSubscribeEdtionList" resultType="map">
   		SELECT 
  			a.`userId`, a.`editionId`, a.`createdAt`, b.`id`, b.`userId`, b.`thumbnailPath`
  		FROM `edition` AS b	
@@ -70,5 +70,5 @@
  		ON a.`editionId` = b.`id`
  		ORDER BY	
  			a.`createdAt` DESC
- 	</select>
+ 	</select> -->
 </mapper>

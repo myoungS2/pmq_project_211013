@@ -76,4 +76,6 @@ public interface EditionDAO {
 	// selectEditionListByUserId (발행인의 발행글 리스트 가져오기)
 	public List<Edition> selectEditionListByUserId(int userId);
 	
+	// selectEditionByEditionId (구독자의 구독중인 발행글 리스트 가져오기)
+	public List<Edition> selectEditionListByEditionId(int id);
 }

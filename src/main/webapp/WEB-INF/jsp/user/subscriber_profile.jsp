@@ -12,7 +12,7 @@
 			</c:if>
 			<%-- 프로필 사진이 있을 때 --%>
 			<c:if test="${not empty userInfo.profileImgPath}">
-				<div><img src="${userInfo.profileImgPath}" alt="userProfileImg"></div>
+				<div><img src="${userInfo.profileImgPath}" alt="userProfileImg" width="80" height="80"></div>
 			</c:if>
 		</div>
 		<div>
@@ -38,15 +38,18 @@
 	<div>
 		<small><strong>구독 리스트</strong></small>
 	</div>
-	<c:forEach var="subscribeList" items="${subscribeEdtionList}">
-		<c:forEach var="editionMap" items="${subscribeList}">
-			<div>
-				<img src="${editionMap[thumbnailPath]}" alt="구독썸네일">
-			</div>
-		</c:forEach>
+	<c:forEach var="subscribeEditionList" items="${subscribeEditionList}">
+		<div>
+			<img src="${subscribeEditionList.thumbnailPath}" alt="구독썸네일" width="150" height="200">
+		</div>
 	</c:forEach>
 	<%-- like list --%>
 	<div>
 		<small><strong>관심 리스트</strong></small>
 	</div>
+	<c:forEach var="likeEditionList" items="${likeEditionList}">
+	<div>
+		<img src="${likeEditionList.thumbnailPath}" alt="관심썸네일" width="150" height="200">
+	</div>
+	</c:forEach>
 </div>

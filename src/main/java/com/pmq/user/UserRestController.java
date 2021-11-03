@@ -56,9 +56,11 @@ public class UserRestController {
 	public Map<String, Boolean> isDuplicatedNickname (
 			@RequestParam("nickname") String nickname) {
 		// 닉네임 중복 여부 -> DB조회
+		
 		// 중복여부에 대한 결과 -> Map생성
 		Map<String, Boolean> result = new HashMap<>();
 		result.put("result", userBO.existNickname(nickname));
+		
 		
 		return result;
 	}
@@ -168,6 +170,8 @@ public class UserRestController {
 		
 		return result;
 	}
+	
+	// 로그아웃
 	
 	
 }

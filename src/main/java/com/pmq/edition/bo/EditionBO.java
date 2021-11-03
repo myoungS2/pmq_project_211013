@@ -62,6 +62,10 @@ public class EditionBO {
 		return editionDAO.selectEditionList();
 	}
 	
+	public List<Edition> getEditionListByEditionId(int editionId){
+		return editionDAO.selectEditionListByEditionId(editionId);
+	}
+	
 	/**
 	 * select edition by editionId
 	 * @param editionId

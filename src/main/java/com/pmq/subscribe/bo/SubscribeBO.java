@@ -6,11 +6,15 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pmq.edition.bo.EditionBO;
 import com.pmq.subscribe.dao.SubscribeDAO;
 import com.pmq.subscribe.model.Subscribe;
 
 @Service
 public class SubscribeBO {
+	// EditionBO 연결
+	@Autowired
+	private EditionBO editionBO;
 	
 	// SubscribeDAO 연결
 	@Autowired
@@ -56,12 +60,10 @@ public class SubscribeBO {
 	
 	// getSubscribeListByUserId
 	public List<Subscribe> getSubscribeListByUserId (int loginUserId){
+		
 		return subscribeDAO.selectSubscribeListByUserId(loginUserId);
 	}
 	
-	// join
-	public List<Map<String, Object>> getSubscribeEdtionList(){
-		return subscribeDAO.selectSubscribeEdtionList();
-	}
+	
 	
 }

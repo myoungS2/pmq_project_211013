@@ -77,14 +77,23 @@ public class UserController {
 		
 		// subscribe (subscriber)
 		List<Subscribe> subscribeList = subscribeBO.getSubscribeListByUserId(loginUserId);
-		model.addAttribute("subscribeList", subscribeList);
+			for (Subscribe subscribe : subscribeList) {
+				List<Edition> subscribeEditionList = editionBO.getEditionListByEditionId(subscribe.getEditionId());
+				model.addAttribute("subscribeEditionList", subscribeEditionList);
+			}
+		// model.addAttribute("subscribeList", subscribeList);
+		
 		
 		// like (subscriber)
 		List<Like> likeList = likeBO.getLikeListByUserId(loginUserId);
-		model.addAttribute("likeList", likeList);
+			for (Like like : likeList) {
+				List<Edition> likeEditionList = editionBO.getEditionListByEditionId(like.getEditionId());
+				model.addAttribute("likeEditionList", likeEditionList);
+			}
 		
-		List<Map<String, Object>> subscribeEdtionList = subscribeBO.getSubscribeEdtionList();
-		model.addAttribute("subscribeEdtionList",subscribeEdtionList);
+		
+		// model.addAttribute("likeList", likeList);
+		
 
 		// user Role정보 가져와서 각각 다른 viewName내려보내주기 -> 로그인 된 유저정보
 		User userInfo = userBO.getUser(loginUserId);

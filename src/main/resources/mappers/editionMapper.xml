@@ -126,4 +126,23 @@
 		ORDER BY
 			`createdAt` DESC
  	</select>
+ 	<select id="selectEditionListByEditionId"  parameterType="int" resultType="com.pmq.edition.model.Edition">
+ 		SELECT
+ 			`id`
+			,`userId`
+			,`userLoginId`
+			,`thumbnailPath`
+			,`subject`
+			,`category`
+			,`publishingDate`
+			,`content`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`edition`
+		WHERE
+			`id` = #{id}
+		ORDER BY
+			`createdAt` DESC
+ 	</select>
  </mapper>

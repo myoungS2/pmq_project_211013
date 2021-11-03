@@ -76,7 +76,7 @@ public class EditionRestController {
 	@PostMapping("/update")
 	public Map<String, Object> editionUpdate(
 			@RequestParam("editionId") int editionId,
-			@RequestParam("file") MultipartFile file,
+			@RequestParam(value = "file", required = false) MultipartFile file,
 			@RequestParam("subject") String subject,
 			@RequestParam("category") String category,
 			@RequestParam("publishingDate") int publishingDate,
@@ -87,7 +87,13 @@ public class EditionRestController {
 		HttpSession session = request.getSession(); // edition > create에서 ajax가 잘 작동되면 여기로 들어오게 됨..!(breakPoint)
 		Integer userId = (Integer) session.getAttribute("userId"); // 어디에 session을 넣었는지 잘 확인하기(UserRestController)
 		String userLoginId = (String) session.getAttribute("userLoginId");
-
+		
+		// file이 null이라면, 기존 파일 그대로 업데이트...
+		if (file == null) {
+			
+		}
+		
+		
 		// update DB
 		editionBO.updateEdition(editionId ,userId, userLoginId ,file, subject, category, publishingDate, content);
 		

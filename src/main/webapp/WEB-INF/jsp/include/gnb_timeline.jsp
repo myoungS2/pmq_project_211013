@@ -6,7 +6,7 @@
 		<%-- 검색창 --%>
 		<div class="input-group col-4">
 			<input type="text" id="keywordInput" name="keyword"  class="form-control" placeholder="검색어를 입력하세요.">
-			<button id="searchBtn" type="button" class="input-group-btn btn-dark">검색</button>
+			<a href="#" id="searchBtn" type="button" class="btn input-group-btn btn-dark">검색</a>
 		</div>
 		<%-- 로고 --%>
 		<div class="col-4">
@@ -36,3 +36,45 @@
 		</div>
 	</div>
 </div>	
+
+<script>
+	$(document).ready(function(){
+		// 검색하기
+		$('#searchBtn').on('click', function(e){
+			e.preventDefault();
+			
+			// let search = document.getElementById("searchBtn");
+			// alert(search.href);
+			
+			let keyword = $('#keywordInput').val().trim();
+			// alert(keyword);
+			if (keyword == ''){
+				alert("검색어를 입력하세요.");
+			}
+			
+			location.href="/timeline/view?keyword="+keyword;
+			
+			console.log("주소:" + location.href);
+			
+			// 서버에 요청 -> x
+			/* $.ajax({
+				type: 'GET'
+				, url: 'timeline/search'
+				, data: {"keyword" : keyword}
+				, success: function(data){
+				if(data.result == 'success'){
+					location.href= '/timeline/view';
+				}
+				}
+			, error: function(e){
+				
+			}
+				
+			}); // search ajax close */
+			
+		}); // searchBtn close
+		
+		
+	}); // document close
+
+</script>

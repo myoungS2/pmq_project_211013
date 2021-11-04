@@ -145,4 +145,27 @@
 		ORDER BY
 			`createdAt` DESC
  	</select>
+ 	<select id="selectEditionListByKeyword" parameterType="String" resultType="com.pmq.edition.model.Edition">
+ 		SELECT 
+ 			`id`
+			,`userId`
+			,`userLoginId`
+			,`thumbnailPath`
+			,`subject`
+			,`category`
+			,`publishingDate`
+			,`content`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`edition`
+		WHERE
+			`subject`
+			LIKE CONCAT('%', #{keyword} ,'%')
+			OR
+			`content`
+			LIKE CONCAT('%', #{keyword} ,'%')
+		ORDER BY
+			`createdAt` DESC	
+ 	</select>
  </mapper>

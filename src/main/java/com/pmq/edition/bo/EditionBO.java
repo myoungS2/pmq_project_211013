@@ -145,5 +145,9 @@ public class EditionBO {
 		return editionDAO.selectEditionListByUserId(loginUserId);
 	}
 	
+	// getEditionByKeyword 
+	public List<Edition> getEditionListByKeyword(String keyword){
+		return editionDAO.selectEditionListByKeyword(keyword);
+	}
 	
 }

@@ -82,9 +82,21 @@
 			</div>
 		</div>
 		<%-- publication subject + state (상태가 임시저장의 경우 클릭가능 -> publication update 화면이동 --%>
-		<div>
-			Publication List
-		</div>
+		<c:forEach var="publication" items="${publicationList}">
+			<div>
+				<a href="/publication/update_view?editionId=${editionInfo.id}&userId=${editionInfo.userId}&publicationId=${publication.id}" class="d-flex justify-content-around mt-3">
+				<%-- 발행글 제목 --%>
+				<div>${publication.subject}</div>
+				<%-- 발행글 상태 --%>
+					<c:if test="${publication.state eq 'send'}">
+						<div id="sendPublication" class="text-success">${publication.state}</div>
+					</c:if>
+					<c:if test="${publication.state eq 'draft'}">
+						<div id="draftPublication" class="text-danger">${publication.state}</div>
+					</c:if>
+				</a>
+			</div>
+		</c:forEach>
 	</div>
 </div>
 <script>
@@ -118,9 +130,10 @@
 			}); // edition delete ajax close
 			
 			
+			
 		}); // editionDelBtn close
 		
-		
+				
 	}); // document close
 
 </script>

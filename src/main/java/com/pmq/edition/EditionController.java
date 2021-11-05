@@ -15,6 +15,8 @@ import com.pmq.edition.bo.EditionBO;
 import com.pmq.edition.model.Edition;
 import com.pmq.like.bo.LikeBO;
 import com.pmq.like.model.Like;
+import com.pmq.publication.bo.PublicationBO;
+import com.pmq.publication.model.Publication;
 import com.pmq.subscribe.bo.SubscribeBO;
 import com.pmq.subscribe.model.Subscribe;
 import com.pmq.user.bo.UserBO;
@@ -23,6 +25,10 @@ import com.pmq.user.model.User;
 @RequestMapping("/edition")
 @Controller
 public class EditionController {
+	// PublicationBO 연결
+	@Autowired
+	private PublicationBO publicationBO;
+	
 	// LikeBO 연결
 	@Autowired
 	private LikeBO likeBO;
@@ -104,6 +110,8 @@ public class EditionController {
 		model.addAttribute("subscriberList", subscriberList);
 		
 		// 발행글 리스트
+		List<Publication> publicationList = publicationBO.getPublicationList(userId);
+		model.addAttribute("publicationList", publicationList);
 		
 		return "/template/layout_edition";
 		
@@ -125,7 +133,6 @@ public class EditionController {
 		// edition 작성 user(publisher)정보 가져오기 -> 넘겨받은 파라미터
 		User publisherInfo = userBO.getPublisher(userId);
 		model.addAttribute("publisherInfo", publisherInfo);
-		
 		
 		model.addAttribute("viewName", "edition/update");
 		

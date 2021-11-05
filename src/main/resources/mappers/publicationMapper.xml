@@ -3,10 +3,10 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.pmq.publication.dao.PublicationDAO">
- 	<select id="selectPublication" resultType="com.pmq.publication.model.Publication">
+ 	<select id="selectPublicationList" parameterType="int" resultType="com.pmq.publication.model.Publication">
  		SELECT
  			`id`
-			, `editionId`
+ 			,`editionId`
 			, `userId`
 			, `userNickname`
 			, `subject`
@@ -41,4 +41,20 @@
 			, NOW()
 		) 			
  	</insert>
+ 	<select id="selectPublicationById" parameterType="int" resultType="com.pmq.publication.model.Publication">
+ 		SELECT
+ 			`id`
+ 			,`editionId`
+			, `userId`
+			, `userNickname`
+			, `subject`
+			, `content`
+			, `state`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`publication`
+		WHERE
+			`id` = #{id}
+ 	</select>
  </mapper>

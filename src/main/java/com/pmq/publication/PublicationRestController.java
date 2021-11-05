@@ -24,7 +24,7 @@ public class PublicationRestController {
 	@Autowired
 	private PublicationBO publicationBO;
 	
-	// 발행
+	// 발행 (발행->메일)
 	@PostMapping("/create")
 	public Map<String, Object> publicationSend(
 			@RequestParam("editionId") int editionId,
@@ -41,18 +41,16 @@ public class PublicationRestController {
 		
 		Map<String, Object> result = new HashMap<>();
 		
-		// select DB (state확인, null확인 후 createDB 가능하도록)
-		Publication publication = publicationBO.getPublication();
-		// 만약 state가 send일 경우 -> 또 보내지면 x
-		if (publication.getState().contains("send")) {
-			result.put("result", "error");
-		}
-		
 		// insert DB
-		publicationBO.createPublication(editionId, userId, userNickname, subject, content, state);
-		
-		
+		int row = publicationBO.createPublication(editionId, userId, userNickname, subject, content, state);
+		if (row > 0) {
+			result.put("result", "success");
+		} else {
+			result.put("result", "error");
+		}	
 		return result;
-		
 	}
+	
+	// 발행 (임시저장->메일)
+	
 }

@@ -78,7 +78,7 @@
 			</div>
 			<%-- publication create 버튼(클릭시 publication create 화면이동) --%>
 			<div>
-				<a href="/publication/create_view" id="createPublicationBtn" type="button" class="btn btn-dark">글쓰기</a>
+				<a href="/publication/create_view?editionId=${editionInfo.id}&userId=${editionInfo.userId}" id="createPublicationBtn" type="button" class="btn btn-dark">글쓰기</a>
 			</div>
 		</div>
 		<%-- publication subject + state (상태가 임시저장의 경우 클릭가능 -> publication update 화면이동 --%>
@@ -119,7 +119,6 @@
 			
 			
 		}); // editionDelBtn close
-		
 		
 		
 	}); // document close

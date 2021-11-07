@@ -1,18 +1,22 @@
 package com.pmq.edition;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.HttpServletBean;
 
 import com.pmq.edition.bo.EditionBO;
 import com.pmq.edition.model.Edition;
@@ -142,4 +146,32 @@ public class EditionController {
 	}
 	
 	// excel
+	@GetMapping("/excel/download")
+	public void excelDownload(
+			@RequestParam("editionId") int editionId,
+			HttpServletResponse response,
+			Model model) {
+		
+		Workbook wb = new XSSFWorkbook();
+        Sheet sheet = wb.createSheet("sheet1");
+        Row row = null;
+        Cell cell = null;
+        int rowNum = 1;
+        
+	    // 구독자 리스트
+	    List<Subscribe> subscriberList = subscribeBO.getSubscribeList(editionId);
+	    model.addAttribute("subscriberList", subscriberList);
+	    
+        
+        // header
+        row = sheet.createRow(rowNum++);
+        cell = row.createCell(0);
+        cell.setCellValue("subscriber");
+        cell = row.createCell(1);
+        cell.setCellValue("subscriber email");
+        cell = row.createCell(2);
+        cell.setCellValue("subscribe date");
+        
+        // body (자동증가+내용_subscriberList로 부터)
+	}
 }

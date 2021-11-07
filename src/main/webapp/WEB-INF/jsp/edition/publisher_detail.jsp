@@ -61,7 +61,7 @@
 				<small class="font-weight-bold">구독자 리스트</small>
 			</div>
 			<div>
-				<a href="#" id="excelDownloadBtn" type="button" class="btn btn-dark">Excel</a>
+				<a href="/edition/excel/download" id="excelDownloadBtn" type="button" class="btn btn-dark">Excel</a>
 			</div>
 		</div>
 		<%-- subscriber 프로필사진 + nickname (클릭시 userProfile 화면이동) --%>
@@ -132,12 +132,6 @@
 			
 		}); // editionDelBtn close
 		
-		// 엑셀 다운로드
-		$('#excelDownloadBtn').on('click',  function(e){
-			e.preventDefault(); 
-			
-			location.href = "/edition/excel"
-		})
 				
 	}); // document close
 

@@ -24,4 +24,5 @@ public interface PublicationDAO {
 	
 	// select DB
 	public Publication selectPublicationById(int id);
+	
 }

@@ -135,8 +135,8 @@ public class UserRestController {
 			session.setAttribute("userLoginId", user.getLoginId());
 			session.setAttribute("userNickname", user.getNickname());
 			session.setAttribute("userId", user.getId());
+			session.setAttribute("userEmail", user.getEmail());
 			
-		
 		} else {
 			// 일치하는 값 없으면 -> sign in fail
 			result.put("result", "error");

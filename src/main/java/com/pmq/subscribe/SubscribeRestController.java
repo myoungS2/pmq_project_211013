@@ -36,7 +36,8 @@ public class SubscribeRestController {
 		HttpSession session = request.getSession();
 		String userLoginId = (String) session.getAttribute("userLoginId");
 		Integer userId = (Integer) session.getAttribute("userId");
-		
+		String userEmail = (String) session.getAttribute("userEmail");
+				
 		if (userId == null) {
 			result.put("result", "error");
 			logger.error("[like] No userId");
@@ -44,7 +45,7 @@ public class SubscribeRestController {
 		}
 		
 		// insert DB
-		subscribeBO.addOrDelSubscribe(userId, userLoginId, editionId);
+		subscribeBO.addOrDelSubscribe(userId, userLoginId, userEmail, editionId);
 		result.put("result", "success");
 		
 		return result;

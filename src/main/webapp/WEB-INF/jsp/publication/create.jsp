@@ -54,7 +54,7 @@
 			// 서버에 요청
 			
 			$.ajax({
-				url:'/publication/create'
+				url:'/publication/email/send'
 				, method: 'POST'
 				, dataType: 'json'
 				, data: {"subject":subject, "content":content, "state":state, "editionId":editionId, "userId":userId}
@@ -101,10 +101,8 @@
 			let userId = $(this).data('user-id');
 			
 			
-			// 서버에 요청
-			
 			$.ajax({
-				url:'/publication/create'
+				url:'/publication/email/send'
 				, method: 'POST'
 				, dataType: 'json'
 				, data: {"subject":subject, "content":content, "state":state, "editionId":editionId, "userId":userId}
@@ -119,6 +117,7 @@
 					location.reload();
 				}
 			}); // send ajax close
+			
 		}); // sendOutBtn close
 		
 	}); // document close

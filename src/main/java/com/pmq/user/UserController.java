@@ -92,7 +92,7 @@ public class UserController {
 			}
 		
 		
-		// model.addAttribute("likeList", likeList);
+	//	 model.addAttribute("likeList", likeList);
 		
 
 		// user Role정보 가져와서 각각 다른 viewName내려보내주기 -> 로그인 된 유저정보

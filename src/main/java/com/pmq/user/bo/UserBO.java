@@ -104,7 +104,18 @@ public class UserBO {
 		return userDAO.selectPublisher(userId);
 	}
 	
-	// update user
+	
+	/**
+	 * 유저정보 업데이트
+	 * @param userId
+	 * @param userLoginId
+	 * @param file
+	 * @param nickname
+	 * @param email
+	 * @param address
+	 * @param website
+	 * @param introduce
+	 */
 	public void updateUser(int userId, String userLoginId, MultipartFile file, String nickname, String email, 
 			String address, String website, String introduce) {
 			
@@ -133,4 +144,5 @@ public class UserBO {
 				// update DB
 				userDAO.updateUser(userId, profileImgPath, nickname, email, address, website, introduce);
 	}
+	
 }

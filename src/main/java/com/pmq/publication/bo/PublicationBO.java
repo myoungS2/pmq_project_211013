@@ -23,7 +23,6 @@ public class PublicationBO {
 	public int createPublication(int editionId, int userId, 
 		String userNickname, String subject, String content, String state) {
 	return publicationDAO.insertPublication(editionId, userId, userNickname, subject, content, state);
-		
 	}
 	
 	// select DB

@@ -20,6 +20,7 @@ public interface SubscribeDAO {
 	public void insertSubscribe(
 			@Param("userId") int userId,
 			@Param("userLoginId") String userLoginId,
+			@Param("userEmail") String userEmail,
 			@Param("editionId") int editionId);
 	
 	// delete subscribe

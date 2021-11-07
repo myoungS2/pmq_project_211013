@@ -48,8 +48,10 @@
 		<small><strong>관심 리스트</strong></small>
 	</div>
 	<c:forEach var="likeEditionList" items="${likeEditionList}">
-	<div>
-		<img src="${likeEditionList.thumbnailPath}" alt="관심썸네일" width="150" height="200">
-	</div>
+		<div>	
+			<div>
+				<img src="${likeEditionList.thumbnailPath}" alt="관심썸네일" width="150" height="200">
+			</div>
+		</div>	
 	</c:forEach>
 </div>

@@ -41,6 +41,8 @@ public class PublicationController {
 		
 		Publication publication = publicationBO.getPublicationById(publicationId);
 		model.addAttribute("publication" , publication);
+		model.addAttribute("editionId", editionId);
+		model.addAttribute("userId", userId);
 		
 		if (publication.getState() != "send") {
 			model.addAttribute("viewName", "publication/update");

@@ -25,7 +25,7 @@ public class PublicationRestController {
 	private PublicationBO publicationBO;
 	
 	// 발행 (발행->메일)
-	@PostMapping("/create")
+	@PostMapping("/email/send")
 	public Map<String, Object> publicationSend(
 			@RequestParam("editionId") int editionId,
 			@RequestParam("userId") int userId,
@@ -51,6 +51,6 @@ public class PublicationRestController {
 		return result;
 	}
 	
-	// 발행 (임시저장->메일)
+	
 	
 }

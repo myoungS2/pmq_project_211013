@@ -1,5 +1,6 @@
 package com.pmq.edition;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,13 +9,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.HttpServletBean;
 
 import com.pmq.edition.bo.EditionBO;
 import com.pmq.edition.model.Edition;
 import com.pmq.like.bo.LikeBO;
-import com.pmq.like.model.Like;
 import com.pmq.publication.bo.PublicationBO;
 import com.pmq.publication.model.Publication;
 import com.pmq.subscribe.bo.SubscribeBO;
@@ -138,4 +140,6 @@ public class EditionController {
 		
 		return "/template/layout_edition";
 	}
+	
+	// excel
 }

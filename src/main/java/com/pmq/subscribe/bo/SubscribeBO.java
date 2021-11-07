@@ -26,13 +26,13 @@ public class SubscribeBO {
 	 * @param userLoginId
 	 * @param editionId
 	 */
-	public void addOrDelSubscribe(int userId, String userLoginId, int editionId) {
+	public void addOrDelSubscribe(int userId, String userLoginId, String userEmail, int editionId) {
 		
 		boolean existSubscribe = existSubscribe(userId, editionId);
 		
 		if (existSubscribe != true) {
 			// 구독 중이지 않을 때 -> insert DB
-			subscribeDAO.insertSubscribe(userId, userLoginId, editionId);
+			subscribeDAO.insertSubscribe(userId, userLoginId , userEmail , editionId);
 		} else {
 			subscribeDAO.deleteSubscribe(userId, editionId);
 		}
@@ -60,7 +60,6 @@ public class SubscribeBO {
 	
 	// getSubscribeListByUserId
 	public List<Subscribe> getSubscribeListByUserId (int loginUserId){
-		
 		return subscribeDAO.selectSubscribeListByUserId(loginUserId);
 	}
 	

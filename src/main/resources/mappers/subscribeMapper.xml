@@ -19,6 +19,7 @@
  		(
  			 `userId`
  			, `userLoginId`
+ 			, `userEmail`
  			, `editionId`
  			, `createdAt`
  		)
@@ -26,6 +27,7 @@
  		(
  			 #{userId}
  			, #{userLoginId}
+ 			, #{userEmail}
  			, #{editionId}
  			, now()
  		)
@@ -43,6 +45,7 @@
  			`id`
 			, `userId`
 			, `userLoginId`
+			, `userEmail`
 			, `editionId`
 			, `createdAt`
  		FROM
@@ -55,6 +58,7 @@
  			`id`
 			, `userId`
 			, `userLoginId`
+			, `userEmail`
 			, `editionId`
 			, `createdAt`
  		FROM

@@ -127,4 +127,24 @@
 	 	WHERE
 	 		`id` = #{id}
  	</update>
+ 	<select id="selectUserById" parameterType="int" resultType="com.pmq.user.model.User">
+	 	SELECT 
+	 			`id`
+				,`loginId`
+				,`password`
+				,`profileImgPath`
+				,`name`
+				,`nickname`
+				,`email`
+				,`address`
+				,`website`
+				,`introduce`
+				,`role`
+				,`createdAt`
+				,`updatedAt`
+			FROM 
+				`user`	
+			WHERE
+				`id` = #{id}
+ 	</select>
  </mapper>

@@ -6,9 +6,16 @@ public class Subscribe {
 	private int id;
 	private int userId;
 	private String userLoginId;
+	private String userEmail;
 	private int editionId;
 	private Date createdAt;
 	
+	public String getuserEmail() {
+		return userEmail;
+	}
+	public void setUserEamil(String userEmail) {
+		this.userEmail = userEmail;
+	}
 	public int getId() {
 		return id;
 	}

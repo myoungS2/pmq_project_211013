@@ -143,7 +143,10 @@
 			// nicknameInput값 가져오기
 			let nickname = $('#nicknameInput').val().trim();
 			// alert(nickname); 값 잘 가져와짐!
-			
+			if (nickname == ''){
+				alert("닉네임을 입력하세요.");
+				return;
+			}
 			// nicknameCheckDuplicated, nicknameCheckOk 상태값
 			// 닉네임 중복여부 -> ajax 서버 호출 
 			$.ajax({

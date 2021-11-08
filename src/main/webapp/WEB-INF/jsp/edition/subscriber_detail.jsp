@@ -32,7 +32,7 @@
 				</c:if>
 				<%-- 프로필 사진이 있을 때 --%>
 				<c:if test="${not empty publisherInfo.profileImgPath}">
-					<div><img src="${publisherInfo.profileImgPath}" alt="userProfileImg" width="80" height="80"></div>
+					<div><img id="profileImg" src="${publisherInfo.profileImgPath}" alt="userProfileImg" width="80" height="80"></div>
 				</c:if>
 				<div><span class="font-weight-bold">by ${publisherInfo.nickname}</span></div>
 			</div>

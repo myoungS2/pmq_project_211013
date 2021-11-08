@@ -4,6 +4,7 @@
 <div>
 <%-- (전체 발행물) edition 가져오기 --%>
 <c:if test="${empty searchEditionList}">
+<div class="d-flex justify-content-around">
 	<c:forEach var="edition" items="${editionList}">
 		<div id="editionFrame">
 			<div id="edtioncard" class="m-3">
@@ -12,16 +13,20 @@
 			</div>
 		</div>
 	</c:forEach>
-</c:if>	
-<%-- (검색 발행물) edition 가져오기 --%>
-<c:if test="${not empty searchEditionList}">
-	<div>
-		${keyword}로 검색하신 결과입니다.
-	</div>	
-	<c:forEach var="searchEdition" items="${searchEditionList}">
-		<div>
-			<a href="/edition/detail_view?editionId=${searchEdition.id}&userId=${searchEdition.userId}"><img src="${searchEdition.thumbnailPath}" alt="searchEditionThumbnail" width="250" height="250"></a>
-		</div>
-	</c:forEach>
+</div>	
 </c:if>
+
+<%-- (검색 발행물) edition 가져오기 --%>
+	<c:if test="${not empty searchEditionList}">
+		<div id="searchResult" class="text-center mb-4">
+			<div>
+				<strong>${keyword}</strong> <span>(으)로 검색하신 결과입니다.</span>
+			</div>
+		</div>	
+		<c:forEach var="searchEdition" items="${searchEditionList}">
+			<div>
+				<a href="/edition/detail_view?editionId=${searchEdition.id}&userId=${searchEdition.userId}"><img src="${searchEdition.thumbnailPath}" alt="searchEditionThumbnail" width="250" height="250"></a>
+			</div>
+		</c:forEach>
+	</c:if>
 </div>

@@ -11,8 +11,7 @@
 		<%-- 로고 --%>
 		<div class="col-4">
 			<div class="text-center">
-				<a id="timelineLogo" href="/timeline/view">pmq</a><br>
-				<span>The month between people</span>
+				<a id="timelineLogo" href="/timeline/view"><img src="/static/images/logo1.png" alt="로고"></a><br>
 			</div>
 		</div>
 		<%-- sign in / user 정보 --%>
@@ -20,10 +19,10 @@
 			<%-- 로그인 시 --%>
 			<c:if test="${not empty userId}">
 				<div>
-					<a href="/user/profile_view?userId=${userId}">${userNickname}</a> <span>님 안녕하세요.</span><br>
+					<a id="userProfileMove" href="/user/profile_view?userId=${userId}"><strong>${userNickname}</strong></a> <span>님 안녕하세요.</span><br>
 					<%-- userRole 검사 -> publiser만 보이게 --%>
 					<c:if test="${userInfo.role eq 'publisher'}">
-						<a href="/edition/create_view" id="editionCreateBtn" class="btn btn-dark w-100">발행시작</a>
+						<a href="/edition/create_view" id="editionCreateBtn" class="btn mt-1"><img src="/static/images/startpublishingbtn.png" alt="발행시작btn"></a>
 					</c:if>
 				</div>
 			</c:if>

@@ -8,10 +8,10 @@
 		</div>
 		<%-- sign in / user 정보 --%>
 			<%-- 로그인 시 --%>
-		<div class="mt-3">	
+		<div class="mt-3 mb-3">	
 			<c:if test="${not empty userId}">
 				<div>
-					<a href="/user/profile_view?userId=${userId}">${userNickname}</a><span>님 안녕하세요.</span>
+					<a id="userProfileMove" href="/user/profile_view?userId=${userId}"><strong>${userNickname}</strong></a><span>님 안녕하세요.</span>
 				</div>
 			</c:if>
 			<%-- 비로그인 시 --%>

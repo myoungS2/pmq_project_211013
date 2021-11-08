@@ -12,7 +12,7 @@
 			</c:if>
 			<%-- 프로필 사진이 있을 때 --%>
 			<c:if test="${not empty userInfo.profileImgPath}">
-				<div><img src="${userInfo.profileImgPath}" alt="userProfileImg" width="80" height="80"></div>
+				<div><img id="profileImg" src="${userInfo.profileImgPath}" alt="userProfileImg" width="80" height="80"></div>
 			</c:if>
 		</div>
 		<div>
@@ -30,7 +30,7 @@
 			</div>
 			<%-- update profile btn(화면이동) --%>
 			<div>
-				<a href="/user/profile_update_view" id="updateProfileBtn" class="btn btn-dark w-100">프로필 수정</a>
+				<a href="/user/profile_update_view" id="updateProfileBtn" class="btn w-100"><img src="/static/images/editprofilebtn.png"></a>
 			</div>
 		</div>
 	</div>	
@@ -38,9 +38,11 @@
 	<div>
 		<small><strong>발행물 리스트</strong></small>
 	</div>
-	<c:forEach var="edition" items="${editionList}">
-	<div>
-		<img src="${edition.thumbnailPath}" alt="발행물썸네일" width="150" height="200"> 
+	<div class="d-flex justify-content-around">
+		<c:forEach var="edition" items="${editionList}">
+		<div>
+			<a href="/edition/detail_view?editionId=${edition.id}&userId=${edition.userId}"><img src="${edition.thumbnailPath}" alt="발행물썸네일" width="150" height="200"></a> 
+		</div>
+		</c:forEach>
 	</div>
-	</c:forEach>
 </div>

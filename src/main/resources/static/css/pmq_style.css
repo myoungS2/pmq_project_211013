@@ -8,7 +8,7 @@ section {width:250px;}
 #signinBtn {color:#fff;}
 #signupBtn {color:#fff;}
 #signupLink {color:#000;}
-
+#profileImg {border-radius:70%; overflow:hidden;}
 
 /* timeline */
 #timelineHeader {height:180px;}
@@ -18,10 +18,12 @@ section {width:250px;}
 #signInUpUrl {color:#000; font-weight:bold;}
 #editionFrame {width:300px; height:300px;}
 #searchBtn {color:#fff;}
+#searchResult {height:30px; width:900px;}
 
 /* gnb(general) */
 #gnbHeader {height:80px;}
 #gnbLogo {color:#000; font-weight:bold; font-size:20px;}
+#userProfileMove {color:#000;}
 
 /* edition */
 #editionCreateSection {width:600px;}
@@ -44,6 +46,7 @@ section {width:250px;}
 #publicationCreateSection {width:600px;}
 #draftBtn {color:#fff;}
 #sendOutBtn {color:#fff;}
+#publicationSubject {color:#000;}
 
 /* user profile */
 #updateProfileBtn {color:#fff;}

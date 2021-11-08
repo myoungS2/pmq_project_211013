@@ -28,7 +28,7 @@
 				</c:if>
 				<%-- 프로필 사진이 있을 때 --%>
 				<c:if test="${not empty publisherInfo.profileImgPath}">
-					<a href="/user/profile_view?userId=${publisherInfo.id}"><div><img src="${publisherInfo.profileImgPath}" alt="userProfileImg" width="80" height="80"></div></a>
+					<a href="/user/profile_view?userId=${publisherInfo.id}"><div><img id="profileImg" src="${publisherInfo.profileImgPath}" alt="userProfileImg" width="80" height="80"></div></a>
 				</c:if>
 				<div><span class="font-weight-bold">by ${publisherInfo.nickname}</span></div>
 			</div>
@@ -68,11 +68,9 @@
 		<%-- subscriber 프로필사진 + nickname (클릭시 userProfile 화면이동) --%>
 		<c:forEach var="subscriber" items="${subscriberList}">
 			<div class="d-flex justify-content-around mt-3">
-				<div><strong>${subscriber.userLoginId}</strong></div>
-				<div>${subscriber.userEmail}</div>
-				<div>
-					<fmt:formatDate var="formatRegDate" value="${subscriber.createdAt}" pattern="yyyy-MM-dd" />
-				</div>
+				<div><small><strong>${subscriber.userLoginId}</strong></small></div>
+				<div><small>${subscriber.userEmail}</small></div>
+				<div><fmt:formatDate var="formatRegDate" value="${subscriber.createdAt}" pattern="yyyy-MM-dd" /></div>
 			</div>
 		</c:forEach>
 		<%-- publication list --%>
@@ -88,7 +86,7 @@
 		<%-- publication subject + state (상태가 임시저장의 경우 클릭가능 -> publication update 화면이동 --%>
 		<c:forEach var="publication" items="${publicationList}">
 			<div>
-				<a href="/publication/update_view?editionId=${editionInfo.id}&userId=${editionInfo.userId}&publicationId=${publication.id}" class="d-flex justify-content-around mt-3">
+				<a id="publicationSubject" href="/publication/update_view?editionId=${editionInfo.id}&userId=${editionInfo.userId}&publicationId=${publication.id}" class="d-flex justify-content-around mt-3">
 				<%-- 발행글 제목 --%>
 				<div>${publication.subject}</div>
 				<%-- 발행글 상태 --%>

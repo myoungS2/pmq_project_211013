@@ -1,12 +1,14 @@
 package com.pmq.publication;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,12 +17,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pmq.publication.bo.PublicationBO;
 import com.pmq.publication.model.Publication;
+import com.pmq.subscribe.bo.SubscribeBO;
+import com.pmq.subscribe.model.Subscribe;
 
 @RequestMapping("/publication")
 @RestController
 public class PublicationRestController {
+	// SubscriberBO 연결
+	@Autowired
+	private SubscribeBO subscribeBO;
 	
-	// Publication BO 연결
+	// javaMailSender 연결
+	@Autowired
+	private JavaMailSender javaMailSender;
+	
+	// PublicationBO 연결
 	@Autowired
 	private PublicationBO publicationBO;
 	
@@ -45,12 +56,25 @@ public class PublicationRestController {
 		int row = publicationBO.createPublication(editionId, userId, userNickname, subject, content, state);
 		if (row > 0) {
 			result.put("result", "success");
+			
 		} else {
 			result.put("result", "error");
-		}	
+		}
+		
+		// 발행글
+		Publication publication = publicationBO.getPublicationById(userId);
+		model.addAttribute("publication", publication);
+		
+		// 구독자 이메일 주소
+		List<Subscribe> subscriberInfo = subscribeBO.getSubscribeList(editionId);
+		model.addAttribute("subscriberInfo", subscriberInfo);
+		for (Subscribe subscriber : subscriberInfo) {
+			String subscriberEmail = subscriber.getuserEmail();
+			model.addAttribute("subscriberEmail", subscriberEmail);
+		}
+		
 		return result;
-	}
-	
+	}	
 	
 	
 }

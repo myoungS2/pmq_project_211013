@@ -17,4 +17,13 @@ spring:
       favor-path-extension: true 
       media-types:
         xls: application/vnd.ms-ecel
-
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: mythe1004@naver.com
+    password: Aud2dnjfem!
+    properties:      mail:
+      smtp:
+          auth: true
+          starttls:
+            enable: true

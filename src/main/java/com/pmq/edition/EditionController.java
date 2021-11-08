@@ -1,5 +1,6 @@
 package com.pmq.edition;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -150,28 +151,47 @@ public class EditionController {
 	public void excelDownload(
 			@RequestParam("editionId") int editionId,
 			HttpServletResponse response,
-			Model model) {
+			Model model) throws IOException {
 		
 		Workbook wb = new XSSFWorkbook();
         Sheet sheet = wb.createSheet("sheet1");
         Row row = null;
         Cell cell = null;
-        int rowNum = 1;
-        
-	    // 구독자 리스트
-	    List<Subscribe> subscriberList = subscribeBO.getSubscribeList(editionId);
-	    model.addAttribute("subscriberList", subscriberList);
-	    
+        int rowNum = 0;
+        int sum = 0;
         
         // header
         row = sheet.createRow(rowNum++);
         cell = row.createCell(0);
         cell.setCellValue("subscriber");
         cell = row.createCell(1);
-        cell.setCellValue("subscriber email");
+        cell.setCellValue("email");
         cell = row.createCell(2);
-        cell.setCellValue("subscribe date");
+        cell.setCellValue("subscribeDate");
         
         // body (자동증가+내용_subscriberList로 부터)
+        // 구독자 리스트
+	    List<Subscribe> subscriberList = subscribeBO.getSubscribeList(editionId);
+	    	for (Subscribe subscriber : subscriberList) {
+	    		for (int i=0 ; i < subscriberList.size() ; i++) {
+	    			sum = i++;
+	    			row = sheet.createRow(rowNum++);
+	    			cell = row.createCell(i);
+	    			cell.setCellValue(subscriber.getUserLoginId());
+	    			cell = row.createCell(i+1);
+	    			cell.setCellValue(subscriber.getuserEmail());
+	    			cell = row.createCell(i+2);
+	    			cell.setCellValue(subscriber.getCreatedAt()); // 못생긴 숫자..44503.1665162037(날짜인데...ㅜ)
+	    		}
+	    	}
+	    	
+	    // 컨텐츠 타입과 파일명 지정
+	    response.setContentType("ms-vnd/excel");
+	    response.setHeader("Content-Disposition", "attachment;filename=example.xlsx");
+	    
+	    // excel file output
+	    wb.write(response.getOutputStream());
+	    wb.close();
+	    
 	}
 }

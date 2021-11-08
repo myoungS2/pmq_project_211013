@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
        
 <div id="editionDetailDiv" class="d-flex justify-content-center">
 	<div>
@@ -61,15 +62,17 @@
 				<small class="font-weight-bold">구독자 리스트</small>
 			</div>
 			<div>
-				<a href="/edition/excel/download" id="excelDownloadBtn" type="button" class="btn btn-dark">Excel</a>
+				<a href="/edition/excel/download?editionId=${editionInfo.id}" id="excelDownloadBtn" type="button" class="btn btn-dark">Excel</a>
 			</div>
 		</div>
 		<%-- subscriber 프로필사진 + nickname (클릭시 userProfile 화면이동) --%>
 		<c:forEach var="subscriber" items="${subscriberList}">
 			<div class="d-flex justify-content-around mt-3">
 				<div><strong>${subscriber.userLoginId}</strong></div>
-				<%-- 날짜 형식 고치기! --%>
-				<div>${subscriber.createdAt}</div>
+				<div>${subscriber.userEmail}</div>
+				<div>
+					<fmt:formatDate var="formatRegDate" value="${subscriber.createdAt}" pattern="yyyy-MM-dd" />
+				</div>
 			</div>
 		</c:forEach>
 		<%-- publication list --%>
@@ -132,6 +135,8 @@
 			
 		}); // editionDelBtn close
 		
+		// excel 
+		$('#')
 				
 	}); // document close
 

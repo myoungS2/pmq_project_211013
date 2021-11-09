@@ -7,8 +7,8 @@ import com.pmq.like.model.Like;
 
 public class InterestView {
 	private Edition edition;
-	private List<Subscribe> subscribeList;
-	private List<Like> likeList;
+	private Subscribe subscribe;
+	private Like like;
 	
 	public Edition getEdition() {
 		return edition;
@@ -16,17 +16,18 @@ public class InterestView {
 	public void setEdition(Edition edition) {
 		this.edition = edition;
 	}
-	public List<Subscribe> getSubscribeList() {
-		return subscribeList;
+	
+	public Subscribe getSubscribe() {
+		return subscribe;
 	}
-	public List<Like> getLikeList() {
-		return likeList;
+	public void setSubscribe(Subscribe subscribe) {
+		this.subscribe = subscribe;
 	}
-	public void setLikeList(List<Like> likeList) {
-		this.likeList = likeList;
+	public Like getLike() {
+		return like;
 	}
-	public void setSubscribeList(List<Subscribe> subscribeList) {
-		this.subscribeList = subscribeList;
+	public void setLike(Like like) {
+		this.like = like;
 	}
 	
 }

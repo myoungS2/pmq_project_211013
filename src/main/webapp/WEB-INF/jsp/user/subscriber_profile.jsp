@@ -39,10 +39,15 @@
 		<small><strong>구독 리스트</strong></small>
 	</div>
 	<div class="d-flex justify-content-around">
-		<c:forEach var="subscribeEditionList" items="${subscribeEditionList}">
+		<%-- <c:forEach var="subscribeEditionList" items="${subscribeEditionList}">
 		<div>
 			<a><img src="${subscribeEditionList.thumbnailPath}" alt="구독썸네일" width="150" height="200"></a>
 		</div>
+		</c:forEach> --%>
+		<c:forEach var="interestView" items="${interestViewList}">
+			<div>
+				<a><img src="${interestView.edition.thumbnailPath}" alt="구독썸네일" width="150" height="200"></a>
+			</div>
 		</c:forEach>
 	</div>
 	<%-- like list --%>

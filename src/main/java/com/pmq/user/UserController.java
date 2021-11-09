@@ -86,9 +86,9 @@ public class UserController {
 //				model.addAttribute("subscribeEditionList", subscribeEditionList);
 //			}
 		
-		List<InterestView> interestViewList = interestBO
+		List<InterestView> interestViewList = interestBO.generateInterestViewList(loginUserId);
+			model.addAttribute("interestViewList", interestViewList);
 		
-			
 		// like (subscriber)
 		List<Like> likeList = likeBO.getLikeListByUserId(loginUserId);
 			for (Like like : likeList) {

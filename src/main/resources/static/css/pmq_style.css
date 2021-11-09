@@ -5,7 +5,7 @@
 header {height:100px;}
 #logo {color:#000; font-weight:bold; font-size:30px;}
 section {width:250px;}
-#signinBtn {color:#fff;}
+#signinBtn {color:#fff; background-color:transparent;}
 #signupBtn {color:#fff;}
 #signupLink {color:#000;}
 #profileImg {border-radius:70%; overflow:hidden;}

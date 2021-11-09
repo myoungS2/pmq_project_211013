@@ -13,7 +13,7 @@
 	
 	<%-- sign in btn --%>
 	<div class="d-flex justify-content-center mt-3">
-		<button type="submit" id="signinBtn" class="btn btn-dark w-100">sign in</button>
+		<button type="submit" id="signinBtn" class="btn"><img src="/static/images/signinbtn.png" alt="로그인btn"></button>
 	</div>
 	
 	<%-- sign up link --%>

@@ -20,7 +20,7 @@
 	<c:if test="${not empty searchEditionList}">
 		<div id="searchResult" class="text-center mb-4">
 			<div>
-				<strong>${keyword}</strong> <span>(으)로 검색하신 결과입니다.</span>
+				 <span>This is result of search by</span><strong><span>" </span>${keyword}<span> "</span></strong>
 			</div>
 		</div>	
 		<c:forEach var="searchEdition" items="${searchEditionList}">

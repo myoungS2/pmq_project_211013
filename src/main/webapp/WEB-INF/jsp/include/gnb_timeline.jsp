@@ -5,8 +5,8 @@
 	<div class="d-flex justify-content-around align-items-center mt-3">
 		<%-- 검색창 --%>
 		<div class="input-group col-4">
-			<input type="text" id="keywordInput" name="keyword"  class="form-control" placeholder="검색어를 입력하세요.">
-			<a href="#" id="searchBtn" type="button" class="btn input-group-btn btn-dark">검색</a>
+			<input type="text" id="keywordInput" name="keyword"  class="form-control" placeholder="Please enter keyword.">
+			<a href="#" id="searchBtn" type="button" class="btn input-group-btn btn-dark">search</a>
 		</div>
 		<%-- 로고 --%>
 		<div class="col-4">
@@ -19,7 +19,9 @@
 			<%-- 로그인 시 --%>
 			<c:if test="${not empty userId}">
 				<div>
-					<a id="userProfileMove" href="/user/profile_view?userId=${userId}"><strong>${userNickname}</strong></a> <span>님 안녕하세요.</span><br>
+					 <div class="ml-4">
+					 	<strong><span>Hello, </span><a id="userProfileMove" href="/user/profile_view?userId=${userId}">${userNickname}</strong></a>
+					 </div>
 					<%-- userRole 검사 -> publiser만 보이게 --%>
 					<c:if test="${userInfo.role eq 'publisher'}">
 						<a href="/edition/create_view" id="editionCreateBtn" class="btn mt-1"><img src="/static/images/startpublishingbtn.png" alt="발행시작btn"></a>

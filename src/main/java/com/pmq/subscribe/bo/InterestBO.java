@@ -44,6 +44,7 @@ public class InterestBO {
 				interest.setSubscribe(subscribe);
 				interest.setEdition(edition);
 				
+				interestViewList.add(interest);
 			}
 			
 			return interestViewList;

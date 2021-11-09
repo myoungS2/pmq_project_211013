@@ -40,12 +40,12 @@
 
 	<%-- alter profile btn --%>
 	<div class="d-flex justify-content-center mt-3">
-		<a id="updateProfileBtn" class="btn btn-dark w-100">프로필수정</a>
+		<a id="updateProfileBtn" class="btn"><img src="/static/images/editprofilebtn2.png" alt="프로필수정btn"></a>
 	</div>
 
 	<%-- sign out btn --%>
 	<div class="d-flex justify-content-center mt-3">
-		<a href="/user/sign_out_view" id="signOutBtn" class="btn btn-dark w-100">로그아웃</a>
+		<a href="/user/sign_out_view" id="signOutBtn" class="btn"><img src="/static/images/signoutbtn.png" alt="로그아웃btn"></a>
 	</div>
 </div>
 

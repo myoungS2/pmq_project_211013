@@ -38,7 +38,7 @@
 		<textarea class="form-control mt-2" id="editionIntroduceInput" cols="20" rows="15" ></textarea>
 		<%-- 발행물 등록 버튼 --%>
 		<div class="d-flex justify-content-center mt-3">
-				<a id="createBtn" class="btn btn-dark w-100">등록하기</a>
+				<a id="createBtn" class="btn"><img src="/static/images/enrollmentbtn.png" alt="등록btn"></a>
 		</div>
 	</div>	
 </div>

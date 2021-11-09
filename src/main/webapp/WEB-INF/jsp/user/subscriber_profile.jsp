@@ -17,20 +17,20 @@
 		</div>
 		<div>
 			<%-- user nickname --%>
-			<div>
+			<div class="ml-3">
 				<strong>${userInfo.nickname}</strong>
 			</div>
 			<%-- user website --%>
-			<div>
+			<div class="ml-3">
 				<a href="${userInfo.website}">${userInfo.website}</a>
 			</div>
 			<%-- user introduction --%>
-			<div>
+			<div class="ml-3">
 				${userInfo.introduce}
 			</div>
 			<%-- update profile btn(화면이동) --%>
 			<div>
-				<a href="/user/profile_update_view" id="updateProfileBtn" class="btn btn-dark w-100">프로필 수정</a>
+				<a href="/user/profile_update_view" id="updateProfileBtn" class="btn"><img src="/static/images/editprofilebtn.png"></a>
 			</div>
 		</div>
 	</div>	

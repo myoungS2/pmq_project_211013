@@ -11,7 +11,7 @@
 		<div class="mt-3 mb-3">	
 			<c:if test="${not empty userId}">
 				<div>
-					<a id="userProfileMove" href="/user/profile_view?userId=${userId}"><strong>${userNickname}</strong></a><span>님 안녕하세요.</span>
+					<strong><span>Hello, </span><a id="userProfileMove" href="/user/profile_view?userId=${userId}">${userNickname}</strong></a>
 				</div>
 			</c:if>
 			<%-- 비로그인 시 --%>

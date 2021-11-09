@@ -14,10 +14,10 @@
 			<%-- edition alter, delete btns --%>
 			<div>
 				<div class="mt-3">
-					<a href="/edition/update_view?editionId=${editionInfo.id}&userId=${editionInfo.userId}" id="editionAltBtn" type="button" class="btn btn-dark">수정</a>
+					<a href="/edition/update_view?editionId=${editionInfo.id}&userId=${editionInfo.userId}" id="editionAltBtn" type="button" class="btn"><img src="/static/images/editbtn.png" alt="수정btn"></a>
 				</div>
 				<div class="mt-3">
-					<a href="#" id="editionDelBtn" type="button" class="btn btn-dark" data-edition-id="${editionInfo.id}">삭제</a>
+					<a href="#" id="editionDelBtn" type="button" class="btn" data-edition-id="${editionInfo.id}"><img src="/static/images/deletebtn.png" alt="삭제btn"></a>
 				</div>
 			</div>
 			<%-- publisher info --%>
@@ -62,7 +62,7 @@
 				<small class="font-weight-bold">구독자 리스트</small>
 			</div>
 			<div>
-				<a href="/edition/excel/download?editionId=${editionInfo.id}" id="excelDownloadBtn" type="button" class="btn btn-dark">Excel</a>
+				<a href="/edition/excel/download?editionId=${editionInfo.id}" id="excelDownloadBtn" type="button" class="btn"><img src="/static/images/excelbtn.png" alt="엑셀btn"></a>
 			</div>
 		</div>
 		<%-- subscriber 프로필사진 + nickname (클릭시 userProfile 화면이동) --%>
@@ -83,7 +83,7 @@
 			</div>
 			<%-- publication create 버튼(클릭시 publication create 화면이동) --%>
 			<div>
-				<a href="/publication/create_view?editionId=${editionInfo.id}&userId=${editionInfo.userId}" id="createPublicationBtn" type="button" class="btn btn-dark">글쓰기</a>
+				<a href="/publication/create_view?editionId=${editionInfo.id}&userId=${editionInfo.userId}" id="createPublicationBtn" type="button" class="btn"><img src="/static/images/createbtn.png" alt="글쓰기btn"></a>
 			</div>
 		</div>
 		<%-- publication subject + state (상태가 임시저장의 경우 클릭가능 -> publication update 화면이동 --%>

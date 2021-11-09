@@ -40,13 +40,19 @@ public class TimelineController {
 		
 		// 로그인 여부 확인-> userId정보 내려주기
 		HttpSession session = request.getSession();
-		Integer userId = (Integer) session.getAttribute("userId");
-		
-		// userId로 userRole정보 내려주기 -> 발행시작 버튼 (publisher일때만 보이게)
-		User user = userBO.getUser(userId);
-		if (user != null) {
-		 model.addAttribute("userInfo" ,user);
-		} 
+		 if (session.getAttribute("userId") == null) {
+			 
+		 } else {
+			Integer userId = (Integer) session.getAttribute("userId");
+			// userId로 userRole정보 내려주기 -> 발행시작 버튼 (publisher일때만 보이게)
+			User userInfo = userBO.getUser(userId);
+			if (userInfo != null) {
+				model.addAttribute("userInfo", userInfo);
+				model.addAttribute("viewName" ,"timeline");
+			} 
+		 }
+		 
+		 
 		// edition(전체) 가져와서 thumbnailPath 뿌려주기
 		List<Edition> editionList = editionBO.getEditionList();
 		model.addAttribute("editionList", editionList);

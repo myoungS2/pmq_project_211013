@@ -105,11 +105,11 @@ public class EditionController {
 		model.addAttribute("existSubscribe", existSubscribe);
 		
 		// 좋아요 (여부)
-		Boolean existLike = likeBO.existLike(editionId, userInfo.getId());
+		Boolean existLike = likeBO.existLike(userInfo.getId(), editionId);
 		model.addAttribute("existLike" ,existLike);
 		
 		// 좋아요 (count)
-		int likeCount = likeBO.getLikeCountByEditionId(editionId);
+		int likeCount = likeBO.getLikeCountByEditionId(userInfo.getId(),editionId);
 		model.addAttribute("likeCount", likeCount);
 		
 		// 구독자 리스트
@@ -119,6 +119,7 @@ public class EditionController {
 		// 발행글 리스트
 		List<Publication> publicationList = publicationBO.getPublicationList(userId);
 		model.addAttribute("publicationList", publicationList);
+		
 		
 		return "/template/layout_edition";
 		

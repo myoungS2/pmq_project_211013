@@ -14,7 +14,7 @@
 	<%-- 닉네임 / 중복확인 --%>
 	<div class="d-flex">
 		<input type="text" id="nicknameInput" name="nickname" class="form-control mt-3 col-8" value="${userInfo.nickname}"> 
-		<a id="nicknameCheckHref" type="button" class="btn mt-3 ml-3 col-4"><small>중복확인</small></a>
+		<a id="nicknameCheckHref" data-user-id="${userInfo.id}" type="button" class="btn mt-3 ml-3 col-4"><small>중복확인</small></a>
 	</div>
 	<%-- 중복확인 메세지 --%>
 	<div>
@@ -84,14 +84,16 @@
 			// nicknameInput값 가져오기
 			let nickname = $('#nicknameInput').val().trim();
 			// alert(nickname); 값 잘 가져와짐!
+			// userId 정보 같이 보내기
+			let userId = $(this).data('user-id');
 			
 			// nicknameCheckDuplicated, nicknameCheckOk 상태값
 			// 닉네임 중복여부 -> ajax 서버 호출 
 			$.ajax({
 				// request info
 				type: 'get'
-				, url: '/user/is_duplicated_nickname'
-				, data: {"nickname": nickname}
+				, url: '/user/is_duplicated_update_nickname'
+				, data: {"nickname": nickname, "userId": userId}
 				// 응답값
 				, success: function(data) {
 					// alert(data.result); // true or flase 결과 잘 가져와짐!
@@ -100,6 +102,7 @@
 						// true
 						$('#nicknameCheckDuplicated').removeClass('d-none'); // 문구노출
 						$('#nicknameCheckOk').addClass('d-none');
+						alert("기존 닉네임을 사용하시겠습니까?");
 					} else {
 						// false
 						$('#nicknameCheckDuplicated').addClass('d-none'); 

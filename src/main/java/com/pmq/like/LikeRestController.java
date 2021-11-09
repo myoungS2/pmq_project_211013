@@ -19,7 +19,7 @@ import com.pmq.like.bo.LikeBO;
 @RestController
 public class LikeRestController {
 	// logger
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
+//	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	// LikeBO 연결
 	@Autowired
@@ -27,24 +27,19 @@ public class LikeRestController {
 	
 	@RequestMapping("/like")
 	public Map<String, Object> like(
-			@RequestParam("editionId") int editionId
-			, HttpServletRequest request){
+			@RequestParam("editionId") int editionId,
+			@RequestParam("userId") int userId,
+			HttpServletRequest request){
 		
 		Map<String, Object> result = new HashMap<>();
 		HttpSession session = request.getSession();
-		Integer userId = (Integer) session.getAttribute("userId");
+//		Integer userId = (Integer) session.getAttribute("userId");
 		String userNickname = (String) session.getAttribute("userNickname");
 		
-		if (userId == null) {
-			result.put("result", "error");
-			logger.error("[like] No userId");
-			return result;
-		}
 		
 		// like BO
-		likeBO.LikeYn(userId, userNickname,editionId);
-		result.put("result", "success");
-		return result;
-		
-	}
+		likeBO.LikeYn(userId, userNickname, editionId);
+			result.put("result", "success");
+			return result;
+		}
 }

@@ -61,7 +61,6 @@ public class UserRestController {
 		Map<String, Boolean> result = new HashMap<>();
 		result.put("result", userBO.existNickname(nickname));
 		
-		
 		return result;
 	}
 	
@@ -167,6 +166,30 @@ public class UserRestController {
 		
 		Map<String, Object> result = new HashMap<>();
 		result.put("result", "success");
+		
+		return result;
+	}
+	
+	// 닉네임 중복확인(업데이트시)
+	@RequestMapping("/is_duplicated_update_nickname")
+	public Map<String, Boolean> isDuplicatedUpdateNickname (
+			@RequestParam("nickname") String nickname,
+			@RequestParam("userId") int userId) {
+		
+		
+		Map<String, Boolean> result = new HashMap<>();
+		
+		// 닉네임 중복 여부 -> DB조회
+		User user = userBO.getUser(userId);
+		
+		if (userBO.existNickname(nickname) && user != null) {
+			result.put("result", true);
+		} else {
+			}
+		
+		// 중복여부에 대한 결과 -> Map생성
+		
+		result.put("result", userBO.existNickname(nickname));
 		
 		return result;
 	}

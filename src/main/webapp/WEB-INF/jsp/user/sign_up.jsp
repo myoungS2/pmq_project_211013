@@ -109,6 +109,10 @@
 			// loginIdInput값 가져오기
 			let loginId = $('#loginIdInput').val().trim();
 			// alert(loginId); 값 잘 가져와짐!
+			if (loginId == ''){
+				alert("아이디를 입력하세요.");
+				return;
+			}
 			
 			// idCheckDuplicated, idCheckOk 상태값
 			// id 중복여부 -> ajax 서버 호출 

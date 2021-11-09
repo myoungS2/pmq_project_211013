@@ -145,4 +145,5 @@ public class UserBO {
 				userDAO.updateUser(userId, profileImgPath, nickname, email, address, website, introduce);
 	}
 	
+	
 }

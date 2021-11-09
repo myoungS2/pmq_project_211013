@@ -14,7 +14,9 @@ import com.pmq.edition.bo.EditionBO;
 import com.pmq.edition.model.Edition;
 import com.pmq.like.bo.LikeBO;
 import com.pmq.like.model.Like;
+import com.pmq.subscribe.bo.InterestBO;
 import com.pmq.subscribe.bo.SubscribeBO;
+import com.pmq.subscribe.model.InterestView;
 import com.pmq.subscribe.model.Subscribe;
 import com.pmq.user.bo.UserBO;
 import com.pmq.user.model.User;
@@ -22,6 +24,9 @@ import com.pmq.user.model.User;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+	// InterestBO 연결
+	@Autowired
+	private InterestBO interestBO;
 	
 	// UserBO 연결
 	@Autowired
@@ -75,14 +80,15 @@ public class UserController {
 		model.addAttribute("editionList", editionList);
 		
 		// subscribe (subscriber)
-		List<Subscribe> subscribeList = subscribeBO.getSubscribeListByUserId(loginUserId);
-			for (Subscribe subscribe : subscribeList) {
-				List<Edition> subscribeEditionList = editionBO.getEditionListByEditionId(subscribe.getEditionId());
-				model.addAttribute("subscribeEditionList", subscribeEditionList);
-			}
-		// model.addAttribute("subscribeList", subscribeList);
+//		List<Subscribe> subscribeList = subscribeBO.getSubscribeListByUserId(loginUserId);
+//			for (Subscribe subscribe : subscribeList) {
+//				List<Edition> subscribeEditionList = editionBO.getEditionListByEditionId(subscribe.getEditionId());
+//				model.addAttribute("subscribeEditionList", subscribeEditionList);
+//			}
 		
+		List<InterestView> interestViewList = interestBO
 		
+			
 		// like (subscriber)
 		List<Like> likeList = likeBO.getLikeListByUserId(loginUserId);
 			for (Like like : likeList) {

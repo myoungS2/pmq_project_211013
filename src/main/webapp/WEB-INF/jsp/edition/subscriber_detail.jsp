@@ -87,7 +87,7 @@
 			$.ajax({
 				type:'post'
 				, url: '/like/like'
-				, data: {"editionId" : editionId}
+				, data: {"editionId" : editionId, "userId" : userId}
 				, success: function(data){
 					if (data.result == 'success'){
 						// alert("좋아요!");

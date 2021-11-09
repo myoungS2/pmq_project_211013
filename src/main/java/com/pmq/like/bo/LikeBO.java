@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.pmq.like.dao.LikeDAO;
 import com.pmq.like.model.Like;
-import com.pmq.subscribe.model.Subscribe;
 
 @Service
 public class LikeBO {
@@ -26,14 +25,14 @@ public class LikeBO {
 			}
 		}
 	
-		public boolean existLike(Integer userId, int editionId) {
+		public boolean existLike(int userId, int editionId) {
 			int count = likeDAO.selectLikeCountByEditionIdOrUserId(userId, editionId);
 			return count > 0? true : false; // 이 부분 코드가 무슨 뜻일까...(if문 짧게 -> 삼항연산자)
 		}
 	
 		// select like count 
-		public int getLikeCountByEditionId(int editionId) {
-			return likeDAO.selectLikeCountByEditionIdOrUserId(null ,editionId); 
+		public int getLikeCountByEditionId(int userId,int editionId) {
+			return likeDAO.selectLikeCountByEditionIdOrUserId(userId ,editionId); 
 		}
 		
 	// getLikeListByUserid

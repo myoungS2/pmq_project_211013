@@ -70,7 +70,10 @@
 			<div class="d-flex justify-content-around mt-3">
 				<div><small><strong>${subscriber.userLoginId}</strong></small></div>
 				<div><small>${subscriber.userEmail}</small></div>
-				<div><fmt:formatDate var="formatRegDate" value="${subscriber.createdAt}" pattern="yyyy-MM-dd" /></div>
+				<div>
+					<fmt:formatDate var="subscribeStartDate" value="${subscriber.createdAt}" pattern="yyyy-MM-dd" />
+					${subscribeStartDate}
+				</div>
 			</div>
 		</c:forEach>
 		<%-- publication list --%>
@@ -133,8 +136,6 @@
 			
 		}); // editionDelBtn close
 		
-		// excel 
-		$('#')
 				
 	}); // document close
 

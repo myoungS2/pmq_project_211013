@@ -34,6 +34,7 @@ public interface SubscribeDAO {
 	// select subscribeListByUserId 
 	public List<Subscribe> selectSubscribeListByUserId(int userId);
 	
-	// join
-	public List<Map<String, Object>> selectSubscribeEdtionList();
+//	// join
+//	public List<Map<String, Object>> selectSubscribeEdtionList();
+	
 }

@@ -11,7 +11,7 @@ import com.pmq.like.model.Like;
 public interface LikeDAO {
 	// select DB (LikeCount)
 		public int selectLikeCountByEditionIdOrUserId(
-				@Param("userId") Integer userId,
+				@Param("userId") int userId,
 				@Param("editionId") int editionId);
 		
 	// insert DB

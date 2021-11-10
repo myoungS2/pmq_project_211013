@@ -49,4 +49,11 @@
  		WHERE
  			`userId` = #{userId}
  	</select>
+ 	<delete id="deleteLikeByEditionId" parameterType="int">
+ 		DELETE
+		FROM
+			`like`
+		WHERE
+			`editionId` = #{editionId}
+ 	</delete>
  </mapper>

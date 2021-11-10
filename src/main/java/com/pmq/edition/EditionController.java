@@ -117,7 +117,8 @@ public class EditionController {
 		model.addAttribute("subscriberList", subscriberList);
 		
 		// 발행글 리스트
-		List<Publication> publicationList = publicationBO.getPublicationList(userId);
+		List<Publication> publicationList = publicationBO.getPublicationListByUserIdAndEditionId(userId, editionId);
+			
 		model.addAttribute("publicationList", publicationList);
 		
 		
@@ -125,7 +126,14 @@ public class EditionController {
 		
 	}
 	
-	// edition update view
+	/**
+	 * edition update view
+	 * @param userId
+	 * @param editionId
+	 * @param model
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/update_view")
 	public String editionUpdateView(
 			// 클릭한 글이 어떤 글인지, 그 글을 누가 썼는지 넘겨받기
@@ -147,7 +155,13 @@ public class EditionController {
 		return "/template/layout_edition";
 	}
 	
-	// excel
+	/**
+	 * excel download
+	 * @param editionId
+	 * @param response
+	 * @param model
+	 * @throws IOException
+	 */
 	@GetMapping("/excel/download")
 	public void excelDownload(
 			@RequestParam("editionId") int editionId,

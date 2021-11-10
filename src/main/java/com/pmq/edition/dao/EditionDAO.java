@@ -73,12 +73,24 @@ public interface EditionDAO {
 	 */
 	public void deleteEdition(int id);
 	
-	// selectEditionListByUserId (발행인의 발행글 리스트 가져오기)
+	/**
+	 * select edition (발행인의 발행글 리스트 가져오기)
+	 * @param loginUserId
+	 * @return
+	 */
 	public List<Edition> selectEditionListByUserId(int userId);
 	
-	// selectEditionByEditionId (구독자의 구독중인 발행글 리스트 가져오기)
+	/**
+	 * select edition (구독자의 구독중인 발행글 리스트 가져오기)
+	 * @param id
+	 * @return
+	 */
 	public List<Edition> selectEditionListByEditionId(int id);
 	
-	// selectEditionByKeyword 
+	/**
+	 * select edition (타임라인 검색기능)
+	 * @param keyword
+	 * @return
+	 */
 	public List<Edition> selectEditionListByKeyword(String keyword);
 }

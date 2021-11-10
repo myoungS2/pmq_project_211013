@@ -15,8 +15,8 @@ public class PublicationBO {
 	private PublicationDAO publicationDAO;
 	
 	// select DB 
-	public List<Publication> getPublicationList(int userId){
-		return publicationDAO.selectPublicationList(userId);
+	public List<Publication> getPublicationListByUserIdAndEditionId(int userId, int editionId){
+		return publicationDAO.selectPublicationListByUserIdAndEditionId(userId, editionId);
 	}
 	
 	// insert DB
@@ -30,6 +30,5 @@ public class PublicationBO {
 		return publicationDAO.selectPublicationById(id);
 	}
 	
-	// update DB
 	
 }

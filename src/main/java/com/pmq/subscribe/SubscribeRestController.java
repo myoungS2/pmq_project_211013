@@ -25,7 +25,12 @@ public class SubscribeRestController {
 	// logger
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	// start subscribe
+	/**
+	 * subscribe start (구독시작)
+	 * @param editionId
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/start")
 	public Map<String, Object> subscribeStart(
 			@RequestParam("editionId") int editionId,

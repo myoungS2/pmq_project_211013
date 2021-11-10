@@ -38,9 +38,9 @@
 	<div>
 		<small><strong>발행물 리스트</strong></small>
 	</div>
-	<div class="d-flex justify-content-around">
+	<div class="d-flex">
 		<c:forEach var="edition" items="${editionList}">
-		<div>
+		<div class="mr-3">
 			<a href="/edition/detail_view?editionId=${edition.id}&userId=${edition.userId}"><img src="${edition.thumbnailPath}" alt="발행물썸네일" width="150" height="200"></a> 
 		</div>
 		</c:forEach>

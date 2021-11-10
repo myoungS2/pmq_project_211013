@@ -12,12 +12,22 @@ import org.springframework.web.multipart.MultipartFile;
 import com.pmq.common.FileManagerService;
 import com.pmq.edition.dao.EditionDAO;
 import com.pmq.edition.model.Edition;
+import com.pmq.like.dao.LikeDAO;
+import com.pmq.subscribe.dao.SubscribeDAO;
 import com.pmq.subscribe.model.Subscribe;
 
 @Service
 public class EditionBO {
 	// logger
 	private Logger logger = LoggerFactory.getLogger(EditionBO.class);
+	
+	// LikeDAO 연결
+	@Autowired
+	private LikeDAO likeDAO;
+	
+	// SubscribeDAO 연결
+	@Autowired
+	private SubscribeDAO subscribeDAO;
 	
 	// EditionDAO 연결
 	@Autowired
@@ -115,7 +125,10 @@ public class EditionBO {
 		
 	}
 	
-	//delete edition
+	/**
+	 * delete edition
+	 * @param editionId
+	 */
 	public void deleteEdition(int editionId) {
 		// editionId로 edition을 가져온다.
 		Edition edition = getEdition(editionId);
@@ -136,16 +149,28 @@ public class EditionBO {
 			}
 		}
 		
-		// delete DB
+		
+		// delete DB (에디션-구독-좋아요 모두 삭제)
 		editionDAO.deleteEdition(editionId);
+		subscribeDAO.deleteSubscribeByEditionId(editionId);
+		likeDAO.deleteLikeByEditionId(editionId);
+		
 	}	
 	
-	// getEditionListByUserId (발행인의 발행글 리스트 가져오기)
+	/**
+	 * select edition (발행인의 발행글 리스트 가져오기)
+	 * @param loginUserId
+	 * @return
+	 */
 	public List<Edition> getEditionListByUserId(int loginUserId) {
 		return editionDAO.selectEditionListByUserId(loginUserId);
 	}
 	
-	// getEditionByKeyword 
+	/**
+	 * select edition (타임라인 검색기능)
+	 * @param keyword
+	 * @return
+	 */
 	public List<Edition> getEditionListByKeyword(String keyword){
 		return editionDAO.selectEditionListByKeyword(keyword);
 	}

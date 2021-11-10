@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.pmq.edition.bo.EditionBO;
 import com.pmq.edition.model.Edition;
 import com.pmq.like.bo.LikeBO;
+import com.pmq.like.bo.ThinkBO;
 import com.pmq.like.model.Like;
+import com.pmq.like.model.ThinkView;
 import com.pmq.subscribe.bo.InterestBO;
 import com.pmq.subscribe.bo.SubscribeBO;
 import com.pmq.subscribe.model.InterestView;
@@ -24,6 +26,11 @@ import com.pmq.user.model.User;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+	
+	// ThinkBO 연결
+	@Autowired
+	private ThinkBO thinkBO;
+	
 	// InterestBO 연결
 	@Autowired
 	private InterestBO interestBO;
@@ -45,7 +52,7 @@ public class UserController {
 	private LikeBO likeBO;
 	
 	/**
-	 * 로그인 화면
+	 * sign in view
 	 * @param model
 	 * @return
 	 */
@@ -56,7 +63,7 @@ public class UserController {
 	}
 	
 	/**
-	 * 회원가입 화면
+	 * sign up view
 	 * @param model
 	 * @return
 	 */
@@ -66,7 +73,12 @@ public class UserController {
 		return "/template/layout_user";
 	}
 	
-	// 프로필 화면
+	/**
+	 * user profile view
+	 * @param model
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/profile_view")
 	public String profileView(
 			Model model,
@@ -90,15 +102,16 @@ public class UserController {
 			model.addAttribute("interestViewList", interestViewList);
 		
 		// like (subscriber)
-		List<Like> likeList = likeBO.getLikeListByUserId(loginUserId);
-			for (Like like : likeList) {
-				List<Edition> likeEditionList = editionBO.getEditionListByEditionId(like.getEditionId());
-				model.addAttribute("likeEditionList", likeEditionList);
-			}
-		
+//		List<Like> likeList = likeBO.getLikeListByUserId(loginUserId);
+//			for (Like like : likeList) {
+//				List<Edition> likeEditionList = editionBO.getEditionListByEditionId(like.getEditionId());
+//				model.addAttribute("likeEditionList", likeEditionList);
+//			}
 		
 	//	 model.addAttribute("likeList", likeList);
 		
+		List<ThinkView> thinkViewList = thinkBO.generateThinkViewList(loginUserId);
+			model.addAttribute("thinkViewList" , thinkViewList);
 
 		// user Role정보 가져와서 각각 다른 viewName내려보내주기 -> 로그인 된 유저정보
 		User userInfo = userBO.getUser(loginUserId);
@@ -114,7 +127,12 @@ public class UserController {
 	
 	}
 
-	// 프로필 수정 화면
+	/**
+	 * profile update view
+	 * @param model
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/profile_update_view")
 	public String profileUpdateView(
 			Model model,
@@ -132,7 +150,11 @@ public class UserController {
 		
 	}
 	
-	// 로그아웃
+	/**
+	 * sign out view
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/sign_out_view")
 	public String signOutView(HttpServletRequest request) {
 		HttpSession session = request.getSession();

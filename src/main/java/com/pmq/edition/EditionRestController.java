@@ -115,6 +115,7 @@ public class EditionRestController {
 		// delete DB
 		editionBO.deleteEdition(editionId);
 		
+		
 		Map<String, Object> result = new HashMap<>();
 		result.put("result", "success");
 		

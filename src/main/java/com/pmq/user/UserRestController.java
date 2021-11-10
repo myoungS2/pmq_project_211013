@@ -31,7 +31,7 @@ public class UserRestController {
 	private UserBO userBO;
 	
 	/**
-	 * 아이디 중복확인
+	 * duplicate check (아이디 중복확인)
 	 * @param loginId
 	 * @return
 	 */
@@ -48,7 +48,7 @@ public class UserRestController {
 	}
 	
 	/**
-	 * 닉네임 중복확인
+	 * duplicate check (닉네임 중복확인)
 	 * @param nickname
 	 * @return
 	 */
@@ -65,7 +65,7 @@ public class UserRestController {
 	}
 	
 	/**
-	 * 회원가입
+	 * sign up
 	 * @param loginId
 	 * @param password
 	 * @param file
@@ -106,7 +106,7 @@ public class UserRestController {
 	
 	
 	/**
-	 * 로그인
+	 * sign in
 	 * @param loginId
 	 * @param password
 	 * @param request
@@ -144,7 +144,18 @@ public class UserRestController {
 		return result;
 	}
 	
-	// 프로필 수정
+	/**
+	 * update user profile
+	 * @param file
+	 * @param nickname
+	 * @param email
+	 * @param address
+	 * @param website
+	 * @param introduce
+	 * @param request
+	 * @param model
+	 * @return
+	 */
 	@PostMapping("/profile_update")
 	public Map<String, Object> profileUpdate(
 			@RequestParam(value="file", required = false) MultipartFile file,
@@ -170,7 +181,12 @@ public class UserRestController {
 		return result;
 	}
 	
-	// 닉네임 중복확인(업데이트시)
+	/**
+	 * duplicate check (프로파일 업데이트 닉네임 중복확인)
+	 * @param nickname
+	 * @param userId
+	 * @return
+	 */
 	@RequestMapping("/is_duplicated_update_nickname")
 	public Map<String, Boolean> isDuplicatedUpdateNickname (
 			@RequestParam("nickname") String nickname,

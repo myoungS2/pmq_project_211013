@@ -33,7 +33,7 @@ public class UserBO {
 	private UserDAO userDAO;
 	
 	/**
-	 * 아이디 중복확인
+	 *  duplicate check (아이디 중복확인)
 	 * @param loginId
 	 * @return
 	 */
@@ -42,7 +42,7 @@ public class UserBO {
 	}
 	
 	/**
-	 * 닉네임 중복확인
+	 *  duplicate check (닉네임 중복확인)
 	 * @param nickname
 	 * @return
 	 */
@@ -51,7 +51,7 @@ public class UserBO {
 	}
 	
 	/**
-	 * 회원가입
+	 * sign up
 	 * @param loginId
 	 * @param password
 	 * @param file
@@ -77,7 +77,7 @@ public class UserBO {
 	}
 	
 	/**
-	 * 로그인
+	 * sign in
 	 * @param loginId
 	 * @param password
 	 * @return
@@ -87,7 +87,7 @@ public class UserBO {
 	}
 	
 	/**
-	 * 로그인 된 유저의 정보 (userRole)
+	 * select user (userRole)
 	 * @param loginUserId
 	 * @return
 	 */
@@ -96,7 +96,7 @@ public class UserBO {
 	}
 	
 	/** 
-	 * 발행인 유저의 정보
+	 * select user (publisher info)
 	 * @param userId
 	 * @return
 	 */
@@ -106,7 +106,7 @@ public class UserBO {
 	
 	
 	/**
-	 * 유저정보 업데이트
+	 * update user
 	 * @param userId
 	 * @param userLoginId
 	 * @param file

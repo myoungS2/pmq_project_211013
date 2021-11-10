@@ -15,25 +15,21 @@ import com.pmq.subscribe.model.Subscribe;
 
 @Service
 public class InterestBO {
-	// EditionBO
+	// EditionBO 연결
 	@Autowired
 	private EditionBO editionBO;
 	
-	// SubscribeBO
+	// SubscribeBO 연결
 	@Autowired
 	private SubscribeBO subscribeBO;
-	
-	// LikeBO?
-//	@Autowired
-//	private LikeBO likeBO;
 	
 	// edition - subscribe 가져오기
 	public List<InterestView> generateInterestViewList(int loginUserId){
 		List<InterestView> interestViewList = new ArrayList<>();
 		
-			List<Subscribe> subscribeList = subscribeBO.getSubscribeList(loginUserId);
+			List<Subscribe> subscribeList = subscribeBO.getSubscribeListByUserId(loginUserId);
 			// subscribeList -> 반복문 돌려서 subscribe 1개를 꺼냄
-			for (Subscribe subscribe: subscribeList) {
+			for (Subscribe subscribe : subscribeList) {
 				// 구독중인 1개의 edition과 맵핑 될 insertest 만들기
 				InterestView interest = new InterestView();
 				
@@ -49,5 +45,6 @@ public class InterestBO {
 			
 			return interestViewList;
 	}
+	
 	
 }

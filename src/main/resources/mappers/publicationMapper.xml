@@ -3,7 +3,7 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="com.pmq.publication.dao.PublicationDAO">
- 	<select id="selectPublicationList" parameterType="int" resultType="com.pmq.publication.model.Publication">
+ 	<select id="selectPublicationListByUserIdAndEditionId" parameterType="map" resultType="com.pmq.publication.model.Publication">
  		SELECT
  			`id`
  			,`editionId`
@@ -16,6 +16,9 @@
 			, `updatedAt`
 		FROM
 			`publication`
+		WHERE
+			`userId` = #{userId}
+			AND `editionId` = #{editionId}
  	</select>
  	<insert id="insertPublication" parameterType="map">
  		INSERT INTO `publication`

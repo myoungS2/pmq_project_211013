@@ -15,7 +15,12 @@ public class LikeBO {
 	@Autowired
 	private LikeDAO likeDAO;
 	
-	// 좋아요 여부
+		/** 
+		 * like yes or no (좋아요 여부)
+		 * @param userId
+		 * @param userNickname
+		 * @param editionId
+		 */
 		public void LikeYn(int userId, String userNickname, int editionId) {
 			boolean existLike = existLike(userId, editionId);
 			if (existLike) {
@@ -24,18 +29,33 @@ public class LikeBO {
 				likeDAO.insertLike(userId, userNickname, editionId);
 			}
 		}
-	
+		
+		/**
+		 * exist like (좋아요 존재->t/f)
+		 * @param userId
+		 * @param editionId
+		 * @return
+		 */
 		public boolean existLike(int userId, int editionId) {
 			int count = likeDAO.selectLikeCountByEditionIdOrUserId(userId, editionId);
-			return count > 0? true : false; // 이 부분 코드가 무슨 뜻일까...(if문 짧게 -> 삼항연산자)
+			return count > 0? true : false; 
 		}
 	
-		// select like count 
+		/** 
+		 * select like count (좋아요개수)
+		 * @param userId
+		 * @param editionId
+		 * @return
+		 */
 		public int getLikeCountByEditionId(int userId,int editionId) {
 			return likeDAO.selectLikeCountByEditionIdOrUserId(userId ,editionId); 
 		}
 		
-	// getLikeListByUserid
+		/**
+		 * select like (좋아요리스트)
+		 * @param loginUserId
+		 * @return
+		 */
 		public List<Like> getLikeListByUserId (int loginUserId){
 			return likeDAO.selectLikeListByUserId(loginUserId);
 		}

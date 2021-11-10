@@ -10,21 +10,21 @@ import com.pmq.user.model.User;
 public interface UserDAO {
 	
 	/**
-	 * 아이디 중복확인
+	 * duplicate check (아이디 중복확인)
 	 * @param loginId
 	 * @return
 	 */
 	public boolean existLoginId(String loginId);
 	
 	/**
-	 * 닉네임 중복확인
+	 * duplicate check (닉네임 중복확인)
 	 * @param nickname
 	 * @return
 	 */
 	public boolean existNickname(String nickname);
 	
 	/** 
-	 * 회원가입
+	 * insert user
 	 * @param loginId
 	 * @param password
 	 * @param profileImgPath
@@ -49,7 +49,7 @@ public interface UserDAO {
 			@Param("role")String role);
 	
 	/**
-	 * 로그인
+	 * select user
 	 * @param loginId
 	 * @param password
 	 * @return
@@ -59,20 +59,29 @@ public interface UserDAO {
 			@Param("password")String password);
 	
 	/**
-	 * 로그인 된 유저의 정보 (userRole)
+	 * select user (userRole)
 	 * @param loginUserId
 	 * @return
 	 */
 	public User selectUser(int id);
 	
 	/**
-	 * 발행인 유저의 정보
+	 * select user (publisher info)
 	 * @param userId
 	 * @return
 	 */
 	public User selectPublisher(int id);
 	
-	// update user
+	/**
+	 * update user
+	 * @param id
+	 * @param profileImgPath
+	 * @param nickname
+	 * @param email
+	 * @param address
+	 * @param website
+	 * @param introduce
+	 */
 	public void updateUser(
 			@Param("id")int id,
 			@Param("profileImgPath")String profileImgPath, 

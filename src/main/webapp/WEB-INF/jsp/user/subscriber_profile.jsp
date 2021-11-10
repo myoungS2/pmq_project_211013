@@ -38,27 +38,26 @@
 	<div>
 		<small><strong>구독 리스트</strong></small>
 	</div>
-	<div class="d-flex justify-content-around">
-		<%-- <c:forEach var="subscribeEditionList" items="${subscribeEditionList}">
-		<div>
-			<a><img src="${subscribeEditionList.thumbnailPath}" alt="구독썸네일" width="150" height="200"></a>
+	<c:if test="${not empty interestViewList}">
+		<div class="d-flex">
+			<c:forEach var="interest" items="${interestViewList}">
+				<div class="mr-3">
+					<a><img src="${interest.edition.thumbnailPath}" alt="구독썸네일" width="150" height="200"></a>
+				</div>
+			</c:forEach>
 		</div>
-		</c:forEach> --%>
-		<c:forEach var="interestView" items="${interestViewList}">
-			<div>
-				<a><img src="${interestView.edition.thumbnailPath}" alt="구독썸네일" width="150" height="200"></a>
-			</div>
-		</c:forEach>
-	</div>
-	<%-- like list --%>
+	</c:if>
+	<%-- like list(관심리스트가 있는 경우에만)--%>
 	<div>
 		<small><strong>관심 리스트</strong></small>
 	</div>
-	<div class="d-flex justify-content-around">
-		<c:forEach var="likeEditionList" items="${likeEditionList}">
-		<div>
-			<a><img src="${likeEditionList.thumbnailPath}" alt="관심썸네일" width="150" height="200"></a>
+	<c:if test="${not empty thinkViewList}">
+		<div class="d-flex">
+			<c:forEach var="think" items="${thinkViewList}">
+				<div class="mr-3">
+					<a><img src="${think.edition.thumbnailPath}" alt="관심썸네일" width="150" height="200"></a>
+				</div>
+			</c:forEach>
 		</div>
-		</c:forEach>
-	</div>
+	</c:if>
 </div>

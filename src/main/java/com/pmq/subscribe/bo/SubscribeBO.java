@@ -50,7 +50,7 @@ public class SubscribeBO {
 	}
 	
 	/**
-	 * subscribe List
+	 * select subscribe list 
 	 * @param editionId
 	 * @return
 	 */
@@ -58,7 +58,11 @@ public class SubscribeBO {
 		return subscribeDAO.selectSubscribeList(editionId);
 	}
 	
-	// getSubscribeListByUserId
+	/**
+	 * select subscribe list
+	 * @param loginUserId
+	 * @return
+	 */
 	public List<Subscribe> getSubscribeListByUserId (int loginUserId){
 		return subscribeDAO.selectSubscribeListByUserId(loginUserId);
 	}

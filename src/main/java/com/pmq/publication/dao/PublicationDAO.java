@@ -11,7 +11,9 @@ import com.pmq.publication.model.Publication;
 public interface PublicationDAO {
 	
 	// select DB
-	public List<Publication> selectPublicationList(int userId);
+	public List<Publication> selectPublicationListByUserIdAndEditionId(
+			@Param("userId") int userId,
+			@Param("editionId") int editionId);
 	
 	// insert DB
 	public int insertPublication(

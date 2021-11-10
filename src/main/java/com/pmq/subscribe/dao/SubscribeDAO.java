@@ -11,30 +11,56 @@ import com.pmq.subscribe.model.Subscribe;
 @Repository
 public interface SubscribeDAO {
 	
-	// select subscribe
+	/**
+	 * select subscribe
+	 * @param userId
+	 * @param editionId
+	 * @return
+	 */
 	public int selectSubscribeByEditionIdOrUserId(
 			@Param("userId") int userId,
 			@Param("editionId") int editionId);
 	
-	// insert subscribe
+	/**
+	 * insert subscribe
+	 * @param userId
+	 * @param userLoginId
+	 * @param userEmail
+	 * @param editionId
+	 */
 	public void insertSubscribe(
 			@Param("userId") int userId,
 			@Param("userLoginId") String userLoginId,
 			@Param("userEmail") String userEmail,
 			@Param("editionId") int editionId);
 	
-	// delete subscribe
+	/**
+	 * delete subscribe (구독취소)
+	 * @param userId
+	 * @param editionId
+	 */
 	public void deleteSubscribe(
 			@Param("userId") int userId,
 			@Param("editionId") int editionId);
 	
-	// select subscribe List
+	/**
+	 * select subscribe like
+	 * @param editionId
+	 * @return
+	 */
 	public List<Subscribe> selectSubscribeList(int editionId);
 	
-	// select subscribeListByUserId 
+	/**
+	 * select subscribe like
+	 * @param userId
+	 * @return
+	 */
 	public List<Subscribe> selectSubscribeListByUserId(int userId);
 	
-//	// join
-//	public List<Map<String, Object>> selectSubscribeEdtionList();
+	/** 
+	 * delete subscribe (edition 삭제)
+	 * @param editionId
+	 */
+	public void deleteSubscribeByEditionId(int editionId);
 	
 }

@@ -35,7 +35,10 @@
 			<%-- 좋아요 --%>
 			<div class="text-center">
 				<%-- 좋아요 수 (발행인은 클릭x) --%>
-				<div><small>${likeCount}</small></div>
+				<c:if test="${likeCount >= 1}">
+					<div><small>${likeCount}</small></div>
+				</c:if>
+				<div>　　　　　</div>
 				<%-- full heart img --%>
 				<div>
 					<c:if test="${likeCount < 0}">

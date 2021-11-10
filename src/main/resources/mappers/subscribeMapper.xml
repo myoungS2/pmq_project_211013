@@ -53,7 +53,7 @@
  		WHERE
  			`editionId`	= #{editionId}
  	</select>
- 	<select id="selectSubscribeListByUserId" parameterType="int" resultType="map">
+ 	<select id="selectSubscribeListByUserId" parameterType="int" resultType="com.pmq.subscribe.model.Subscribe">
  		SELECT 
  			`id`
 			, `userId`
@@ -66,6 +66,13 @@
  		WHERE
  			`userId` = #{userId}
  	</select>
+ 	<delete id="deleteSubscribeByEditionId" parameterType="int">
+ 		DELETE
+ 		FROM
+ 			`subscribe`
+ 		WHERE
+ 			`editionId` = #{editionId}
+ 	</delete>
 <!--  	<select id="selectSubscribeEdtionList" resultType="map">
   		SELECT 
  			a.`userId`, a.`editionId`, a.`createdAt`, b.`id`, b.`userId`, b.`thumbnailPath`

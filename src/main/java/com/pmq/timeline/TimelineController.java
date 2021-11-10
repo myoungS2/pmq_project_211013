@@ -29,9 +29,13 @@ public class TimelineController {
 	@Autowired
 	private EditionBO editionBO;
 	
-	// 타임라인 뷰 
-	// edtion(썸네일, 썸네일클릭 시) , user 정보 연결(로그인 시)
-	// 검색기능 연결
+	/**
+	 * timeline view
+	 * @param model
+	 * @param request
+	 * @param keyword
+	 * @return
+	 */
 	@RequestMapping("/view")
 	public String timelineView(
 			Model model, 
@@ -68,17 +72,4 @@ public class TimelineController {
 		return "template/layout_timeline";
 	}
 	
-//	// 검색기능
-//	@RequestMapping("/search")
-//	public String timelineSearch(
-//			Model model, 
-//			@RequestParam("keyword") String keyword){
-//		
-//		// keyword로 edition가져오기
-//		
-//		model.addAttribute("viewName", "search_result");
-//		
-//		return "template/layoue_timeline";
-//		
-//	}
 }

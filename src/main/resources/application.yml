@@ -23,7 +23,7 @@ spring:
     username: mythe1004@naver.com
     password: Aud2dnjfem!
     properties:      mail:
-      smtp:
+       smtp:
           auth: true
           starttls:
             enable: true

@@ -26,18 +26,11 @@ import com.pmq.subscribe.model.Subscribe;
 @RequestMapping("/publication")
 @RestController
 public class PublicationRestController {
-	// MailBO 연결
-	@Autowired
-	private MailBO mailBO;
-	
 	// SubscriberBO 연결
 	@Autowired
 	private SubscribeBO subscribeBO;
 	
-	// javaMailSender 연결
-	@Autowired
-	private JavaMailSender javaMailSender;
-	
+
 	// PublicationBO 연결
 	@Autowired
 	private PublicationBO publicationBO;
@@ -52,10 +45,6 @@ public class PublicationRestController {
 			@RequestParam("state") String state,
 			HttpServletRequest request,
 			Model model){
-		
-		JavaMailSender mailSender = null;
-		String FROM_ADDRESS = "mythe1004@gmail.com";
-		
 		
 		// session에서 유저정보 가져오기
 		HttpSession session = request.getSession();
@@ -85,25 +74,13 @@ public class PublicationRestController {
 			model.addAttribute("subscriberEmail", subscriberEmail);
 		}
 		
-		// 메일
-		List<Mail> mailList = mailBO.sendMail(userId, editionId, loginUserId);
-			model.addAttribute("mailList" ,mailList);
-		SimpleMailMessage message = new SimpleMailMessage();	
-		for (Mail mail : mailList) {
-			
-	
-		message.setTo(mail.getAddress());
-		message.setFrom(FROM_ADDRESS);
-		message.setSubject(mail.getSubject());
-		message.setText(mail.getContent());
-		mailSender.send(message);
-		
-		}
 		return result;
 		
 	}
 	
 	// 업데이트
+	
+	
 	
 }
 

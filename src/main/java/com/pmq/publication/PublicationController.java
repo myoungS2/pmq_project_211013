@@ -12,6 +12,7 @@ import com.pmq.publication.model.Publication;
 @RequestMapping("/publication")
 @Controller
 public class PublicationController {
+	// MailBO 연결
 	
 	// publicationBO 연결
 	@Autowired

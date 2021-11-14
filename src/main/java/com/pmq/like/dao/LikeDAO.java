@@ -10,7 +10,7 @@ import com.pmq.like.model.Like;
 @Repository
 public interface LikeDAO {
 	/**
-	 * slect like count 
+	 * select like count 
 	 * @param userId
 	 * @param editionId
 	 * @return
@@ -18,6 +18,12 @@ public interface LikeDAO {
 		public int selectLikeCountByEditionIdOrUserId(
 				@Param("userId") int userId,
 				@Param("editionId") int editionId);
+	/**
+	 * select like (for publisher)
+	 * @param editionId
+	 * @return
+	 */
+		public int selectLikeByEditionId(int editionId);
 		
 	/**
 	 * insert like

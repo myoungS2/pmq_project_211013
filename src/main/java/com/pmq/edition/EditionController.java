@@ -112,6 +112,9 @@ public class EditionController {
 		int likeCount = likeBO.getLikeCountByEditionId(userInfo.getId(),editionId);
 		model.addAttribute("likeCount", likeCount);
 		
+		int likeCountPublisher = likeBO.existLikeForPublisher(editionId);
+		model.addAttribute("likeCountPublisher" ,likeCountPublisher);
+		
 		// 구독자 리스트
 		List<Subscribe> subscriberList = subscribeBO.getSubscribeList(editionId);
 		model.addAttribute("subscriberList", subscriberList);

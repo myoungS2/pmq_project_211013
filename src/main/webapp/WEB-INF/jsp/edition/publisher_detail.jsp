@@ -33,19 +33,23 @@
 				<div><span class="font-weight-bold">by ${publisherInfo.nickname}</span></div>
 			</div>
 			<%-- 좋아요 --%>
-			<div class="text-center">
+			<div class="text-center ml-3">
 				<%-- 좋아요 수 (발행인은 클릭x) --%>
-				<c:if test="${likeCount >= 1}">
-					<div><small>${likeCount}</small></div>
-				</c:if>
-				<div>　　　　　</div>
+				<div>
+					<c:if test="${likeCountPublisher >= 1}">
+						<div><small>${likeCountPublisher}</small></div>
+					</c:if>
+					<c:if test="${likeCountPublisher < 0}">
+						<img src="/static/images/balnk.png" alt="balnk">
+					</c:if>
+				</div>
 				<%-- full heart img --%>
 				<div>
-					<c:if test="${likeCount < 0}">
+					<c:if test="${likeCountPublisher < 0}">
 						<img src="/static/images/emptyHeartIcon.png" alt="emptyheart" width="30" height="30">
 					</c:if>
 					<%-- full heart img (좋아요o) --%>
-					<c:if test="${likeCount >= 1}">
+					<c:if test="${likeCountPublisher >= 1}">
 						<img src="/static/images/fullHeartIcon.png" alt="fullheart" width="30" height="30">
 					</c:if>
 				</div>

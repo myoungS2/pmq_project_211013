@@ -13,6 +13,14 @@
  			AND `userId` = #{userId}
  			</if>
  	</select>
+ 	<select id="selectLikeByEditionId" parameterType="int" resultType="int">
+ 		SELECT
+ 			count(1)
+ 		FROM
+ 			`like`
+ 		WHERE
+ 			`editionId` = #{editionId}
+ 	</select>
  	<insert id="insertLike" parameterType="map">
  		INSERT INTO `like`
  		(

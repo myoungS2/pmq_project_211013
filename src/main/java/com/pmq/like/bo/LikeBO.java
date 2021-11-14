@@ -40,6 +40,11 @@ public class LikeBO {
 			int count = likeDAO.selectLikeCountByEditionIdOrUserId(userId, editionId);
 			return count > 0? true : false; 
 		}
+		
+		public int existLikeForPublisher(int editionId) {
+			int count = likeDAO.selectLikeByEditionId(editionId);
+			return count;
+		}
 	
 		/** 
 		 * select like count (좋아요개수)

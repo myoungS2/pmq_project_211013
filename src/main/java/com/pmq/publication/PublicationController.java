@@ -23,12 +23,12 @@ public class PublicationController {
 	public String publicationCreateView(
 			@RequestParam("editionId") int editionId,
 			@RequestParam("userId") int userId,
-			@RequestParam("publicationId") int publicationId,
+			// @RequestParam("publicationId") int publicationId,
 			Model model) {
 		
 		model.addAttribute("editionId", editionId);
 		model.addAttribute("userId", userId);
-		model.addAttribute("publicationId", publicationId);
+		// model.addAttribute("publicationId", publicationId);
 		model.addAttribute("viewName", "publication/create");
 		
 		return "/template/layout_publication";

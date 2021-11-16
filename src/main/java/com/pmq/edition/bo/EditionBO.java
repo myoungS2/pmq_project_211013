@@ -155,6 +155,7 @@ public class EditionBO {
 		subscribeDAO.deleteSubscribeByEditionId(editionId);
 		likeDAO.deleteLikeByEditionId(editionId);
 		
+		
 	}	
 	
 	/**

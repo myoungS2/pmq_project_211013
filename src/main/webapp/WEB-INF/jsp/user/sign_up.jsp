@@ -178,11 +178,11 @@
 		
 		// 회원유형 잘 선택되는지 확인
 		
-		/* $('input:radio[name="role"]').on('click', function(e){
-			let role = $('input:radio[name="role"]').val();
-			// alert(role); 잘 가져와짐!
-		}); */
-		
+		/*   $('input:radio[name="role"]').on('click', function(e){
+			let role = $('input:radio[name="role"]:checked').val();
+			 // alert(role);
+		}); 
+		 */
 		
 		// 회원가입 버튼
 		$('#signupBtn').on('click', function(e){
@@ -274,7 +274,7 @@
 			let introduce = $('#introduceInput').val().trim();
 			
 			// role
-			let role = $('input:radio[name="role"]').val();
+			let role = $('input:radio[name="role"]:checked').val();
 			if (role == ''){
 				alert("회원유형을 선택하세요.");
 				return;

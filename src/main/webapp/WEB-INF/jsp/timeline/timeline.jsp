@@ -4,9 +4,9 @@
 <div>
 <%-- (전체 발행물) edition 가져오기 --%>
 <c:if test="${empty searchEditionList}">
-<div class="d-flex justify-content-around">
+<div id="timelineFlex" class="d-flex flex-wrap">
 	<c:forEach var="edition" items="${editionList}">
-		<div id="editionFrame">
+		<div id="editionFrame" class="d-flex">
 			<div id="edtioncard" class="m-3">
 				<%-- edition thumbnail 가져오기 -> 클릭 시 디테일로 넘어감 --%>
 				<a href="/edition/detail_view?editionId=${edition.id}&userId=${edition.userId}"><img src="${edition.thumbnailPath}" alt="editionThumbnail" width="250" height="250"></a>

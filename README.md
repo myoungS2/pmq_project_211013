@@ -26,7 +26,5 @@
 
 ## pmq Preview
 - Timeline
-![timeline]()
+![timeline](https://user-images.githubusercontent.com/88493525/142025567-e6c00aec-3576-41ea-bfac-895ef1b17da6.JPG)
 
-- Testing
-![test1]()

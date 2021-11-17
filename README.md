@@ -7,7 +7,7 @@
 ## Description
 ### Schedule
 - 2021-10-13 ~ 2021-11-17
-- WBS : ![WBS](https://user-images.githubusercontent.com/88493525/141890144-05ab3b5a-3e47-4d01-b13c-14ab3cfdd2e7.PNG)
+- WBS : https://docs.google.com/spreadsheets/d/1AXyBOw4q4FeRylrGAptbgXoCKr8zjDcMaH-xB3oCqTY/edit?usp=sharing
 
 ### Tech
 - Java, HTML, CSS, JavaScript, Bootstrap
